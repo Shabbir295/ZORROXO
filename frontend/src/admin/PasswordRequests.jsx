@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Loader2, Key, CheckCircle, Clock, Phone, Send, X, AlertCircle } from 'lucide-react';
+import { Loader2, Key, CheckCircle, Clock, Phone, Send, AlertCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 export default function PasswordRequests() {
@@ -41,8 +41,8 @@ export default function PasswordRequests() {
     setApprovingId(requestId);
 
     try {
-      // 1. Backend API Call
-      const response = await fetch('http://localhost:5000/api/admin/reset-password-by-email', {
+      // 🔥 LIVE BACKEND API CALL
+      const response = await fetch('https://zorroxo-api.vercel.app/api/admin/reset-password-by-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, newPassword }),
@@ -85,7 +85,7 @@ export default function PasswordRequests() {
   return (
     <div className="space-y-8 relative">
       
-      {/* 🔥 TOAST (Error/Success Messages) */}
+      {/* TOAST */}
       <AnimatePresence>
         {toast.show && (
           <motion.div initial={{ opacity: 0, y: -20, x: '-50%' }} animate={{ opacity: 1, y: 0, x: '-50%' }} exit={{ opacity: 0, y: -20, x: '-50%' }} className={`fixed top-6 left-1/2 z-[400] px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 text-sm font-medium w-[90%] max-w-md justify-center ${toast.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
@@ -152,7 +152,7 @@ export default function PasswordRequests() {
         </div>
       )}
 
-      {/* 🔥 SUCCESS MODAL (WhatsApp Khulne Se Pehle) */}
+      {/* 🔥 SUCCESS MODAL */}
       <AnimatePresence>
         {showSuccessModal && (
           <div className="fixed inset-0 z-[500] flex items-center justify-center p-4">
