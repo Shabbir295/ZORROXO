@@ -9,7 +9,6 @@ export default function PasswordRequests() {
   const [approvingId, setApprovingId] = useState(null);
   const [newPassword, setNewPassword] = useState('');
   
-  // 🔥 Toast aur Success Modal ke liye states
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [successData, setSuccessData] = useState({ email: '', phone: '', password: '' });
@@ -41,7 +40,7 @@ export default function PasswordRequests() {
     setApprovingId(requestId);
 
     try {
-      // 🔥 LIVE BACKEND API CALL
+      // 1. Backend API ko call karo (Password Supabase Auth mein update hoga)
       const response = await fetch('https://zorroxo-api.vercel.app/api/admin/reset-password-by-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -51,13 +50,13 @@ export default function PasswordRequests() {
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || 'Failed to update password');
 
-      // 2. Database Update
+      // 2. Database mein request ko "approved" mark karo
       await supabase
         .from('password_requests')
         .update({ status: 'approved', new_password: newPassword })
         .eq('id', requestId);
 
-      // 3. Success Data save karo aur Modal dikhao
+      // 3. Success popup show karo
       setSuccessData({ email, phone, password: newPassword });
       setShowSuccessModal(true);
       setNewPassword('');
@@ -75,7 +74,6 @@ export default function PasswordRequests() {
     const cleanPhone = successData.phone.replace(/\D/g, ''); 
     const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(whatsappMsg)}`;
     
-    // WhatsApp open karo
     window.open(whatsappUrl, '_blank');
     setShowSuccessModal(false);
   };
@@ -85,7 +83,6 @@ export default function PasswordRequests() {
   return (
     <div className="space-y-8 relative">
       
-      {/* TOAST */}
       <AnimatePresence>
         {toast.show && (
           <motion.div initial={{ opacity: 0, y: -20, x: '-50%' }} animate={{ opacity: 1, y: 0, x: '-50%' }} exit={{ opacity: 0, y: -20, x: '-50%' }} className={`fixed top-6 left-1/2 z-[400] px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 text-sm font-medium w-[90%] max-w-md justify-center ${toast.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
@@ -152,7 +149,6 @@ export default function PasswordRequests() {
         </div>
       )}
 
-      {/* 🔥 SUCCESS MODAL */}
       <AnimatePresence>
         {showSuccessModal && (
           <div className="fixed inset-0 z-[500] flex items-center justify-center p-4">
