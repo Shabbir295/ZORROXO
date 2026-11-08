@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-fixed-variant": "#56442e", "on-secondary-container": "#756149", "primary-container": "#22221f", "error": "#ba1a1a", "on-tertiary-fixed": "#211b0f", "inverse-primary": "#c8c6c1", "on-error-container": "#93000a", "surface-container-low": "#f7f3eb", "on-secondary-fixed": "#271907", "on-primary-container": "#8a8985", "inverse-on-surface": "#f4f0e8", "inverse-surface": "#31302b", "primary": "#0b0c09", "primary-fixed-dim": "#c8c6c1", "surface-container-high": "#ece8e0", "on-surface-variant": "#474741", "tertiary": "#100b03", "on-surface": "#1c1c17", "surface-tint": "#5f5e5b", "on-primary-fixed-variant": "#474743", "secondary": "#6f5b44", "tertiary-fixed": "#eee1cd", "surface-container-lowest": "#ffffff", "surface-variant": "#e6e2da", "on-tertiary-container": "#938877", "primary-fixed": "#e5e2dd", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#4e4637", "outline": "#787770", "on-background": "#1c1c17", "on-error": "#ffffff", "tertiary-fixed-dim": "#d2c5b2", "tertiary-container": "#282115", "secondary-fixed-dim": "#dcc2a6", "surface-bright": "#fdf9f1", "surface": "#fdf9f1", "secondary-fixed": "#fadec0", "on-primary-fixed": "#1c1c19", "surface-container-highest": "#e6e2da", "background": "#fdf9f1", "error-container": "#ffdad6", "surface-dim": "#dddad2", "outline-variant": "#c8c7be", "on-secondary": "#ffffff", "surface-container": "#f1ede5", "on-tertiary": "#ffffff", "secondary-container": "#fadec0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-mobile": "1rem", "space-sm": "1rem", "margin-mobile": "1.5rem", "margin": "4rem", "gutter": "2rem", "space-xs": "0.5rem", "space-md": "1.75rem", "space-lg": "3rem", "space-xl": "5.5rem" }, "fontFamily": { "body-md": ["Plus Jakarta Sans"], "headline-md": ["Playfair Display"], "headline-lg": ["Playfair Display"], "body-sm": ["Plus Jakarta Sans"], "display-lg": ["Playfair Display"], "headline-sm": ["Playfair Display"], "display-lg-mobile": ["Playfair Display"], "display-xl-mobile": ["Playfair Display"], "body-lg": ["Plus Jakarta Sans"], "display-xl": ["Playfair Display"], "label-caps-sm": ["Plus Jakarta Sans"], "label-caps-md": ["Plus Jakarta Sans"] }, "fontSize": { "body-md": ["0.9375rem", { "lineHeight": "1.6rem", "letterSpacing": "0em", "fontWeight": "400" }], "headline-md": ["1.875rem", { "lineHeight": "2.375rem", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-sm": ["0.8125rem", { "lineHeight": "1.375rem", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg": ["4rem", { "lineHeight": "4.5rem", "letterSpacing": "-0.015em", "fontWeight": "400" }], "headline-sm": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "display-xl-mobile": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-lg": ["1.125rem", { "lineHeight": "1.875rem", "letterSpacing": "-0.005em", "fontWeight": "400" }], "display-xl": ["5.5rem", { "lineHeight": "6rem", "letterSpacing": "-0.02em", "fontWeight": "400" }], "label-caps-sm": ["0.625rem", { "lineHeight": "0.875rem", "letterSpacing": "0.22em", "fontWeight": "600" }], "label-caps-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.18em", "fontWeight": "600" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen relative"><header class="fixed top-0 w-full z-50 pt-safe"><div class="bg-secondary text-secondary-fixed text-center py-1.5 px-space-xs font-label-caps-sm text-label-caps-sm tracking-widest uppercase">DISCOVER THE NEW STANDARD OF EVERYDAY LUXURY.</div><div class="h-20 bg-surface/90 backdrop-blur-xl px-margin-mobile flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-xs"><button aria-label="Open Menu" class="w-11 h-11 flex items-center justify-center text-primary" id="drawer-open"><span class="material-symbols-outlined text-[24px]">menu</span></button><button aria-label="Search Catalog" class="w-11 h-11 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[22px]">search</span></button></div><div class="flex flex-col items-center justify-center"><span class="font-headline-sm text-headline-sm uppercase tracking-[0.25em] text-primary font-normal">ZORROXO</span><span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase -mt-1">Home</span></div><div class="flex items-center gap-space-xs"><a class="w-11 h-11 relative flex items-center justify-center text-primary" data-path="saved-wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="absolute top-2 right-2 w-4 h-4 bg-secondary text-surface text-[9px] font-bold flex items-center justify-center rounded-full">3</span></a><a class="w-11 h-11 relative flex items-center justify-center text-primary" data-path="shopping-bag" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute top-2 right-2 w-4 h-4 bg-primary text-surface text-[9px] font-bold flex items-center justify-center rounded-full">2</span></a><img alt="Profile" class="w-8 h-8 rounded-full object-cover ml-1" src="https://lh3.googleusercontent.com/aida/AEtjO1X2vk_tMzom5JTWS_TNZ549VwZdxQ3rFPnGHy2DdiuJf2H7TyGjpevZG6w_mgDaf14UenmmyYfqDvVtEn7MQ-rUdE-f-8te9W-yKRJ-7-GJjZiT1UqpVfE9SgucO98DgvJ2j0RHD5AdadMSs9bVGF97QBr405H-1TiHBgEZ4NFdZZFipkkHv5FDAynRBVvX3cPM7QNVfm3o-zWCPi40nvSL8LtBoTRlaXysP0xwuzG4"/></div></div></header><div class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0" id="menu-drawer"><div class="absolute inset-0 bg-primary/40 backdrop-blur-sm transition-opacity" id="drawer-backdrop"></div><aside class="absolute top-0 left-0 bottom-0 w-[85%] max-w-sm bg-surface flex flex-col justify-between pt-safe pb-safe shadow-2xl -translate-x-full transition-transform duration-300 overflow-y-auto"><div class="p-margin-mobile flex flex-col"><div class="flex items-center justify-between pb-space-sm"><span class="font-headline-sm text-headline-sm uppercase tracking-[0.25em] text-primary">ZORROXO</span><button aria-label="Close Menu" class="w-11 h-11 flex items-center justify-center text-primary" id="drawer-close"><span class="material-symbols-outlined">close</span></button></div><nav class="flex flex-col gap-space-xs mt-space-sm"><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="home" href="#">Home</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="explore-shop" href="#">Shop</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="curated-collections" href="#">Collections</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="about-maison" href="#">About</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="editorial-journal" href="#">Journal</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="client-account" href="#">Account</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="order-tracking" href="#">Order Tracking</a></nav></div><div class="p-margin-mobile bg-surface-container-low flex flex-col gap-space-sm"><div class="flex items-center justify-between"><span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Currency</span><div class="flex gap-space-xs"><button class="font-label-caps-sm text-label-caps-sm px-2 py-1 bg-primary text-on-primary">USD</button><button class="font-label-caps-sm text-label-caps-sm px-2 py-1 text-on-surface-variant hover:text-primary">EUR</button><button class="font-label-caps-sm text-label-caps-sm px-2 py-1 text-on-surface-variant hover:text-primary">JPY</button></div></div><div class="flex flex-col gap-1"><span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Personal Concierge</span><a class="font-body-sm text-body-sm text-primary hover:text-secondary" href="#">concierge@zorroxo.com</a><span class="font-body-sm text-body-sm text-on-surface-variant">+1 (800) 492-7790</span></div></div></aside></div><main class="flex flex-col relative w-full pt-20 bg-surface pb-32"><div class="flex flex-col w-full">
+<!-- SECTION A: HERO SECTION -->
+<section class="relative w-full px-margin-mobile pt-space-md pb-space-lg flex flex-col">
+<!-- Edition Tagline Banner -->
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span class="font-label-caps-sm text-label-caps-sm tracking-widest text-secondary uppercase">Autumn / Winter 2025</span>
+</div>
+<span class="font-label-caps-sm text-label-caps-sm px-2.5 py-1 bg-surface-container-high text-on-surface-variant uppercase tracking-wider">Edition 04</span>
+</div>
+<!-- Main Editorial Headline -->
+<div class="flex flex-col mb- space-xs">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight leading-none mb-3">
+        THE ART OF<br/>ELEVATED LIVING.
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs leading-relaxed">
+        Discover thoughtfully selected essentials that redefine modern living through monastic precision and rare permanence.
+      </p>
+</div>
+<!-- Dual CTAs -->
+<div class="flex flex-col gap-2.5 mt-space-sm mb-space-md">
+<a class="w-full py-3.5 bg-primary text-on-primary text-center font-label-caps-md text-label-caps-md tracking-[0.2em] uppercase transition-colors hover:bg-secondary" data-path="explore-shop" href="#">
+        EXPLORE COLLECTION
+      </a>
+<a class="w-full py-3.5 bg-transparent text-primary text-center font-label-caps-md text-label-caps-md tracking-[0.2em] uppercase hover:bg-surface-container-low transition-colors shadow-sm" data-path="curated-collections" href="#">
+        DISCOVER MORE
+      </a>
+</div>
+<!-- Centerpiece Imagery -->
+<div class="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden shadow-md group">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Editorial still life photograph of bespoke sculptural matte titanium audio headphones resting on an organic ivory stoneware ceramic vessel. Warm dramatic natural sidelight, warm ivory plaster wall backdrop, subtle sand and obsidian shadows, architectural monograph aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg14tXXlPz_foKsRlU7ZJxwDBurAtCfT017j2gmY03-oQKlq6ObGL4RzusL7M1ANYzXJMrQYs9pRxgANixb4jG8mqYAvC70nW6Rgje696nkH-jjJqu_KxMnr5aLqwH8MNFO0vhOS_HHCf-f7N8jwx1fEQ5N8GsgtCom4gbBy3TcZCPBa4gY3o9dcT24G3uw2413Hyq3xnuRUgLgM61i2A0QfiGWUSZuOP5fnAxDG58"/>
+<!-- Limited Edition Badge -->
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-1.5 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+<span class="font-label-caps-sm text-label-caps-sm tracking-widest text-primary uppercase">Handcrafted Limited Run</span>
+</div>
+</div>
+<!-- Atmospheric Footnote Tag -->
+<div class="absolute bottom-4 right-4 bg-primary text-on-primary px-3 py-1 shadow-sm">
+<span class="font-label-caps-sm text-label-caps-sm tracking-widest uppercase">No. 087 / 300</span>
+</div>
+</div>
+</section>
+<!-- SECTION B: SHOP BY CATEGORY -->
+<section class="w-full px-margin-mobile py-space-md bg-surface-container-low">
+<div class="flex flex-col mb-space-md">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-[0.25em]">CURATED DISCIPLINES</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-1">Shop by Category</h2>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Category 1: Technology & Gadgets -->
+<a class="group flex flex-col bg-surface overflow-hidden shadow-sm transition-transform active:scale-[0.99]" data-path="explore-shop" href="#">
+<div class="relative aspect-[16/10] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="High-end studio photography of a monolithic matte black acoustic obsidian speaker alongside a sleek champagne titanium smartphone on a light travertine surface, soft diffuse shadows, high fashion editorial tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZbnkANIXISTCTkeUl3wU5okKNS9S6qdzpm8SQNYaeTyX3QO5j01KbCJhj9JgODDFlYW7OvTKNV2LDsrI3BdzbR7h01PORoWmg5fTSVkFyCXB_ammAgmiQoO7cJZku5kp0nsJGuDhR04umpKRqEjv4uSbQxevAZmUWoH-hYgWgV5JLrl95XHPfuhBbxyLyxftZ8kMz-kkQiHCFvcZJw91Hn2ONtQzULj4DBVo0Bsj7"/>
+<span class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1 font-label-caps-sm text-label-caps-sm text-on-surface">24 PIECES</span>
+</div>
+<div class="p-space-sm flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Technology &amp; Gadgets</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">High-fidelity acoustic hardware and tactile instruments</p>
+</div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary flex items-center gap-1 uppercase tracking-widest group-hover:translate-x-1 transition-transform">
+            EXPLORE <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</a>
+<!-- Category 2: Fashion & Apparel -->
+<a class="group flex flex-col bg-surface overflow-hidden shadow-sm transition-transform active:scale-[0.99]" data-path="explore-shop" href="#">
+<div class="relative aspect-[16/10] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="High fashion studio still life of a tailored midnight charcoal double-faced cashmere overcoat draped with a raw-edged natural mulberry silk scarf on a warm limestone plinth, subtle chiaroscuro lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgTL__qu1rh7sJFwAhTVO7cz9ewcUcm2_wG73FKQj7iWvIE0lP90RYmNbkzIfOPFL9tBwxn9HA8fXQc-oxnyIUr99gtqIYUdkDlMsan2jZIWyjz32rpnKJmHfDJquSa0Tt2lp3wzjPCPJqWph8e5lHVfqsqpLd7iA8GaEtHoC2yA6zM3CaHMdyx6kIL3P_MRXKJeP5TpJf0R8GmiUoluhxjh--e46c0GHfQj8SG2xc"/>
+<span class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1 font-label-caps-sm text-label-caps-sm text-on-surface">18 PIECES</span>
+</div>
+<div class="p-space-sm flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Fashion &amp; Apparel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Unstructured tailoring in double-faced Italian fibers</p>
+</div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary flex items-center gap-1 uppercase tracking-widest group-hover:translate-x-1 transition-transform">
+            EXPLORE <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</a>
+<!-- Category 3: Home & Living -->
+<a class="group flex flex-col bg-surface overflow-hidden shadow-sm transition-transform active:scale-[0.99]" data-path="explore-shop" href="#">
+<div class="relative aspect-[16/10] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Monastic architectural interior featuring a brutalist honed Calacatta marble scent diffuser and a hand-thrown warm beige ceramic table lamp emitting a soft ambient glow on a textured plaster console." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtPoHWtLzOiwbd7gI7ZesZYKCMk7F4IIbDZBpXLbNr0sMhXAGKDEEW3XK5c4AhYq85qLcwsTj-06RDreBsLNqKATwMr69dcT42XfySGmWCLD4lsCauUj5y_PlNddCA5WXFke93kutg_vzMg_96w98_o2mYkchfQcHuEQxmFbt2-v79acFUBxEMLapc4rCggwFSPURHhsotYRP9-jUBNYfp_exI4OnK5LYBOrB1KXUa"/>
+<span class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1 font-label-caps-sm text-label-caps-sm text-on-surface">32 PIECES</span>
+</div>
+<div class="p-space-sm flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Home &amp; Living</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Brutalist home fragrances, ceramics, and ambient luminaires</p>
+</div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary flex items-center gap-1 uppercase tracking-widest group-hover:translate-x-1 transition-transform">
+            EXPLORE <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</a>
+<!-- Category 4: Watches & Accessories -->
+<a class="group flex flex-col bg-surface overflow-hidden shadow-sm transition-transform active:scale-[0.99]" data-path="explore-shop" href="#">
+<div class="relative aspect-[16/10] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Macro luxury horology photograph of a bespoke mechanical timepiece with a matte bronze coin-edge bezel and slate grey dial resting upon fine sand-toned Italian suede, crisp micro-details and soft natural morning light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzucSUKM-XynKZ_LeLK7l9jvEHJvZRRHKYDtwoEu_NMUWT4-FaWbnBmgR6ZGMVmzmFnTwovY4qZXWUt-Rm5L7YxCZn9nuD5g9w1PIAQKjdBoluDkREu8BWYLLblT_GO1IkryaNIoT2w7jXxL1b4OzMbONHbmcNsZUiWRCyJzQbXrNkCOBzMhZ4geaK6Hsl16WGXbnbOEOtdoKPdq3V-qSqhenK9nfy6IkSYCVgd7hR"/>
+<span class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1 font-label-caps-sm text-label-caps-sm text-on-surface">14 PIECES</span>
+</div>
+<div class="p-space-sm flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Watches &amp; Accessories</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Independent horological masterworks and small leather goods</p>
+</div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary flex items-center gap-1 uppercase tracking-widest group-hover:translate-x-1 transition-transform">
+            EXPLORE <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</a>
+</div>
+</section>
+<!-- SECTION C: FEATURED COLLECTION ('CURATED FOR YOU') -->
+<section class="w-full py-space-lg flex flex-col">
+<div class="px-margin-mobile flex items-end justify-between mb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-[0.25em]">EDITORIAL SELECTION</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-1">Curated For You</h2>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="font-label-caps-sm text-label-caps-sm uppercase">SWIPE</span>
+<span class="material-symbols-outlined text-[16px]">trending_flat</span>
+</div>
+</div>
+<!-- Horizontal Swipeable Luxury Row -->
+<div class="flex overflow-x-auto gap-4 px-margin-mobile pb-4 pt-1 snap-x snap-mandatory scroll-smooth no-scrollbar">
+<!-- Card 1 -->
+<div class="snap-start shrink-0 w-[280px] bg-surface-container-lowest flex flex-col shadow-sm">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Editorial product shot of the Aethel Minimalist Ceramic Speaker in warm bone-white stoneware finish, minimal bronze knob accent, on an ivory pedestaled shelf, clean architectural composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE8NkFreBmTSwxU6uG82516h2T77OlGTm9GW1X9U8IpA4yVp8whvQXQyXTJrF8Gt9Ia9cW9fm--e7Qm53BjAyWk35b8V0GQPVtfPw6P5HNQUvIzkJBl61xYq2bSZRJ-UsTbaYXK9QqaC_dIyvRdTJqT1ffg5isfcowaC9m2YrTPAlzWi89X3Jgv5fOQn1OsUYEnsdITbcjXCUk8pLnZSvFdIAh7WwevRvbH4Mo7cg1"/>
+<button aria-label="Toggle Wishlist" class="wishlist-btn absolute top-3 right-3 w-8 h-8 bg-surface/90 backdrop-blur-sm flex items-center justify-center text-secondary shadow-sm transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<span class="absolute bottom-3 left-3 bg-primary text-on-primary font-label-caps-sm text-label-caps-sm px-2 py-0.5 tracking-wider uppercase">Rare Batch</span>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between gap-3">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-widest">Audio &amp; Tech</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-1 leading-snug">Aethel Minimalist Ceramic Speaker</h4>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-body-md text-body-md text-primary font-medium">$680</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 35W RMS Hi-Fi</span>
+</div>
+</div>
+<button class="quick-add-btn w-full py-2.5 bg-primary text-on-primary font-label-caps-sm text-label-caps-sm uppercase tracking-widest hover:bg-secondary transition-colors">
+            QUICK ADD
+          </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="snap-start shrink-0 w-[280px] bg-surface-container-lowest flex flex-col shadow-sm">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Macro studio photography of Vanguard Chronograph 41mm mechanical luxury watch with gunmetal brushed dial, bronze bezel, dark bridle leather strap, resting on dark walnut wood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVec49g1xEVRHAAFOZ7ScATdLDB905yT3WmS1CWwdAu6gv4schzF_17xM0UpTUqlqUInTolsyrmiMplesF3NgBm5xBO8FVn5EZQMafObg8KrNrFCrv24wfJ1g7agRG7GpNPmA4rEN1NMu-Vw2fXIgyA8wsQOeuF-DsLlgflVbNxUaS2eW7a2djYG5gcx91ad4UbBBe4333j4Dzb9I6vGCOFIzP93frNVNTg1onwTke"/>
+<button aria-label="Toggle Wishlist" class="wishlist-btn absolute top-3 right-3 w-8 h-8 bg-surface/90 backdrop-blur-sm flex items-center justify-center text-primary shadow-sm transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<span class="absolute bottom-3 left-3 bg-secondary text-on-secondary font-label-caps-sm text-label-caps-sm px-2 py-0.5 tracking-wider uppercase">Limited: 50 Pcs</span>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between gap-3">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-widest">Horology</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-1 leading-snug">Vanguard Chronograph 41mm</h4>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-body-md text-body-md text-primary font-medium">$2,450</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ Calibre 8802</span>
+</div>
+</div>
+<button class="quick-add-btn w-full py-2.5 bg-primary text-on-primary font-label-caps-sm text-label-caps-sm uppercase tracking-widest hover:bg-secondary transition-colors">
+            QUICK ADD
+          </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="snap-start shrink-0 w-[280px] bg-surface-container-lowest flex flex-col shadow-sm">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Still life editorial capture of the Atelier Nappa Leather Weekender bag in deep espresso brown, solid brass hardware, placed upon a brushed limestone architectural bench." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjiJhkFb9-Rp_YMZmyu9YJJpsIexmJx60Obgx_cAAbtS0w0p8TzRzjIMsY55fEmMoA-SmO6tiDYceiLThAAOV01OSZiFbQeRn6iv19zUO-0tjqoySHx9kgRYa20Kyw21hueedWh1PjqAEDzejkRxhPUk_BesW2bcwtKbTbyhk8giPs1lcgceYfez-tbkkilNw8_9Wn8EQHPmgDN9N0ExIBQt_DiGsbzUUxyqhV9ABc"/>
+<button aria-label="Toggle Wishlist" class="wishlist-btn absolute top-3 right-3 w-8 h-8 bg-surface/90 backdrop-blur-sm flex items-center justify-center text-primary shadow-sm transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between gap-3">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-widest">Travel &amp; Leather</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-1 leading-snug">Atelier Nappa Leather Weekender</h4>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-body-md text-body-md text-primary font-medium">$1,190</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ Full Grain Tuscan</span>
+</div>
+</div>
+<button class="quick-add-btn w-full py-2.5 bg-primary text-on-primary font-label-caps-sm text-label-caps-sm uppercase tracking-widest hover:bg-secondary transition-colors">
+            QUICK ADD
+          </button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="snap-start shrink-0 w-[280px] bg-surface-container-lowest flex flex-col shadow-sm">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Minimalist design photography of the Solstice Sculptural Table Lamp, warm cast bronze base with translucent alabaster disc shade glowing subtly in a warm ivory room corner." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2u7A93oDctGkNlMITYw4BAyOR4G5GqKgDLYeGaV-opqbpf4dLtOJbxmtfw-PjPI5xlBWr5KqHnBz9Yz8OgaN7XnwnlFk4jDDHPCJUxWgzPqPgkkZZGC-2loQBvzQ7SlybI8FTQOigW3cWcMkBzXp9zRr0SZbGFZmKeLodov-fpVB3eU9Mat4autfTus-dRJ_ls7SRYG23khp1T50iAlPDMmzCdfjFxQDZGarGrx7U"/>
+<button aria-label="Toggle Wishlist" class="wishlist-btn absolute top-3 right-3 w-8 h-8 bg-surface/90 backdrop-blur-sm flex items-center justify-center text-primary shadow-sm transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between gap-3">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-widest">Home &amp; Objects</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mt-1 leading-snug">Solstice Sculptural Table Lamp</h4>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-body-md text-body-md text-primary font-medium">$430</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ Solid Alabaster</span>
+</div>
+</div>
+<button class="quick-add-btn w-full py-2.5 bg-primary text-on-primary font-label-caps-sm text-label-caps-sm uppercase tracking-widest hover:bg-secondary transition-colors">
+            QUICK ADD
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION D: EDITOR'S PICKS (ASYMMETRIC SPOTLIGHT) -->
+<section class="w-full px-margin-mobile py-space-lg bg-primary text-on-primary">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary-fixed uppercase tracking-[0.25em]">MONOGRAPHIC SPOTLIGHT</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-primary-container uppercase">AUTUMN 25 CRITIQUE</span>
+</div>
+<!-- Editorial Feature Card -->
+<div class="flex flex-col gap-space-md">
+<div class="relative aspect-square w-full overflow-hidden bg-primary-container shadow-xl">
+<img class="w-full h-full object-cover" data-alt="Dramatic architectural portrait of the Obsidian Horizon Smart Audio Device, monolithic geometric black basalt textured casing with polished bronze touch interface, glowing softly in a darkened museum plinth gallery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOX3xyKXeC2Z8i4SkvYRqpGR1HfNxGRFColTA_0ChIi6Q-J0JgTJBw-v0g9wgNd9QQu3FlmL-n8u0dYoyrGT5uSu6wCS6TG5Xm6ITOGdYEBoSHAcPtO63sJTZTwSSlcV5xEGhHwLVMzY-JBnSx7da-FN2bxJg0bqUgeOtHgDqKvYb3x_n3rNcip5SlpIZT6BRrF1IDt4dyVUKIOB-_2W7q4lOmaYYdmqdTphyzQgkH"/>
+<div class="absolute bottom-4 left-4 bg-primary/80 backdrop-blur-sm px-3 py-1.5">
+<span class="font-label-caps-sm text-label-caps-sm text-surface tracking-widest uppercase">PIECE N° 01 — ARCHITECTURAL AUDIO</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="font-headline-md text-headline-md text-surface leading-tight">
+          The Obsidian Horizon Smart Audio Device
+        </h3>
+<!-- Quote Block -->
+<blockquote class="my-2 p-space-sm bg-primary-container text-surface-container-low flex flex-col gap-2">
+<p class="font-headline-sm text-headline-sm italic text-secondary-fixed">
+            “A seamless convergence of acoustic brilliance and brutalist restraint. Designed to outlast transient digital fads.”
+          </p>
+<cite class="font-label-caps-sm text-label-caps-sm text-on-primary-container uppercase tracking-wider not-italic">
+            — Hiroshi Tanaka, Creative Director, Maison Zorroxo
+          </cite>
+</blockquote>
+<div class="flex items-center justify-between mt-2 pt-2">
+<div class="flex flex-col">
+<span class="font-label-caps-sm text-label-caps-sm text-on-primary-container uppercase tracking-widest">EDITION PRICING</span>
+<span class="font-headline-sm text-headline-sm text-surface">$1,850</span>
+</div>
+<button class="px-6 py-3 bg-secondary text-on-secondary font-label-caps-md text-label-caps-md tracking-widest uppercase hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors">
+            VIEW MONOGRAPH
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION E: BRAND STORY ('BEYOND ORDINARY') -->
+<section class="w-full px-margin-mobile py-space-xl bg-surface flex flex-col">
+<div class="flex flex-col gap-space-sm">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-[0.3em]">THE MAISON PHILOSOPHY</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+        Beyond Ordinary.
+      </h2>
+</div>
+<!-- Editorial Narrative Content -->
+<div class="flex flex-col gap-space-md mt-space-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+        Founded between Milan’s historic Brera district and the quiet atelier lanes of Kyoto, ZORROXO was forged on an uncompromising proposition: that true luxury is not the accumulation of objects, but the deliberate curation of permanence.
+      </p>
+<!-- Asymmetrical Craft Detail Grid -->
+<div class="grid grid-cols-2 gap-3 my-2">
+<div class="p-space-sm bg-surface-container flex flex-col gap-1 shadow-sm">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-widest">Heritage</span>
+<span class="font-headline-sm text-headline-sm text-primary">Milan × Kyoto</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Cross-continental monastic studio discipline.</span>
+</div>
+<div class="p-space-sm bg-surface-container flex flex-col gap-1 shadow-sm">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-widest">Ecology</span>
+<span class="font-headline-sm text-headline-sm text-primary">Carbon Negative</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">100% circular metals and trace-certified raw stone.</span>
+</div>
+</div>
+<div class="relative w-full aspect-[16/9] overflow-hidden bg-surface-container-high shadow-md">
+<img class="w-full h-full object-cover" data-alt="Black and white artisan documentary photograph of Japanese and Italian craftspeople working side by side in a minimalist high-ceiling workshop shaping natural walnut and precision-milled titanium components." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBn7yJAu2k68wcSUtJ8kgn85wPdYkNSKeSstTFX2x2WAOZ3PhPhrZWL6uK-i9Z0_7L66VLmdoyTYRYvrpGtmKY4xc-Kt6_Opbppm3qx75yzwsc6oHnxKQY4RcV9gJioGCRxZ0kxdGdFmmq0qPOWZbo83kwzm5Px43caslAgQ0Yvb41Ame8T5OWfQQA3BtOdTInujwXLHPJwagqDTDlpVaP8WAjwCJvrSWm9aoNzzlv"/>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Every artifact created in our studio carries an individual provenance serial, hand-inspected by senior master artisans prior to monographic dispatch. We construct objects meant to be inherited.
+      </p>
+<div class="pt-2">
+<a class="inline-flex items-center gap-2 font-label-caps-md text-label-caps-md text-primary tracking-[0.2em] uppercase hover:text-secondary transition-colors" data-path="about-maison" href="#">
+          READ THE FULL MANIFESTO <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</section>
+<!-- SECTION F: BESTSELLERS WITH INTERACTIVE TABS -->
+<section class="w-full px-margin-mobile py-space-lg bg-surface-container-low">
+<div class="flex flex-col mb-space-sm">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-[0.25em]">ARCHIVAL RANKING</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-1">The Bestsellers</h2>
+</div>
+<!-- Filter Segmented Tabs -->
+<div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar" id="bestseller-tabs">
+<button class="bestseller-tab px-4 py-2 bg-primary text-on-primary font-label-caps-sm text-label-caps-sm uppercase tracking-wider transition-colors shrink-0" data-filter="all">
+        ALL (08)
+      </button>
+<button class="bestseller-tab px-4 py-2 bg-surface text-on-surface-variant font-label-caps-sm text-label-caps-sm uppercase tracking-wider transition-colors shrink-0 hover:text-primary" data-filter="technology">
+        TECHNOLOGY
+      </button>
+<button class="bestseller-tab px-4 py-2 bg-surface text-on-surface-variant font-label-caps-sm text-label-caps-sm uppercase tracking-wider transition-colors shrink-0 hover:text-primary" data-filter="living">
+        LIVING
+      </button>
+<button class="bestseller-tab px-4 py-2 bg-surface text-on-surface-variant font-label-caps-sm text-label-caps-sm uppercase tracking-wider transition-colors shrink-0 hover:text-primary" data-filter="horology">
+        HOROLOGY
+      </button>
+</div>
+<!-- Ranked Product List -->
+<div class="flex flex-col gap-3 mt-space-sm" id="bestsellers-list">
+<!-- Rank 01 -->
+<div class="bestseller-item flex items-center gap-4 p-3 bg-surface shadow-sm transition-all" data-cat="technology">
+<span class="font-headline-md text-headline-md text-secondary font-light w-8 text-center shrink-0">01</span>
+<div class="w-16 h-16 bg-surface-container shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Studio close-up of compact titanium wireless earbuds inside a matte bronze charging case with warm illumination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9adPi-8mYil6v6x4s6H4SG_0rsQK6Ro3zrhaPfM4mp-c206GNRZ7GIrBEbKj7xhbtItboAUgAWvO3hM-8zIBMl2zatG56wF7eQcQ408iTitZ6GGHDu-61Jwxnz5x-CQyDHnFWVdp7MuZm6-XMLt8djffuMM2Yqss0KJQoSCGkiGNwzbs8GSp5poywhAFYW_Jb4P6tlIE7J1vf-8q3gPX_QOpy_E-QNZInGXlgSv4w"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Titanium Audio</span>
+<h4 class="font-headline-sm text-headline-sm text-primary truncate">Aurum Wireless In-Ear Monolith</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">$390 USD</span>
+</div>
+<button class="quick-add-btn shrink-0 w-9 h-9 bg-surface-container-high flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Rank 02 -->
+<div class="bestseller-item flex items-center gap-4 p-3 bg-surface shadow-sm transition-all" data-cat="living">
+<span class="font-headline-md text-headline-md text-secondary font-light w-8 text-center shrink-0">02</span>
+<div class="w-16 h-16 bg-surface-container shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Sculptural travertine marble incense burner shaped like a geometric bridge resting on stone dust with thin smoke plume." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOafsPOLYs7YRV_rBkXHswZTAFhAaA4us9tIeu38_CmGJn28E3odwVKaa2-9u_7rpRGFo3peSNGiy5o9eRKC3bOmOvyj-R7BNSh0gxdVevU_X6UHxV72vAXpMhz-Z9frq0XDDxChPdX3CtBSoxvccOCNtO9Gn_hmXfACJrpAcliwzpxH1jMsbmpr8nZS6tbeH96m1X7kL8hhyvHL3cB1_0o-Ii9AHZAAQ-joNwL40v"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Sensory Objects</span>
+<h4 class="font-headline-sm text-headline-sm text-primary truncate">Komorebi Travertine Burner</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">$280 USD</span>
+</div>
+<button class="quick-add-btn shrink-0 w-9 h-9 bg-surface-container-high flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Rank 03 -->
+<div class="bestseller-item flex items-center gap-4 p-3 bg-surface shadow-sm transition-all" data-cat="horology">
+<span class="font-headline-md text-headline-md text-secondary font-light w-8 text-center shrink-0">03</span>
+<div class="w-16 h-16 bg-surface-container shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Macro angle of a minimal Bauhaus-inspired mechanical desk clock crafted from solid billet aluminum and glass." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjz4UIK8JH7yOQEfqh_QaUbKdeMYCaxRWPdJ1lItV92Npf1L3POAnqH1SRTT2zjgvB4V6s-NTOERcX7zf5_3auM7Gipbn4wM4AMAspd18je_F5x5VmB2In2XKGN3txN_JSLMIr6-AtpPcxfDa3g1-h2_ANZ61eb5a64gb7R1bNfhObJkJiEBktT2IjvLMVnTB8AJ7LUiVRIGqQS7e5RuVL_OxL75VZN_5J6WSox75E"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Horological Objects</span>
+<h4 class="font-headline-sm text-headline-sm text-primary truncate">Chronos Minimal Desk Regulator</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">$820 USD</span>
+</div>
+<button class="quick-add-btn shrink-0 w-9 h-9 bg-surface-container-high flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION G: NEWSLETTER ('AN INVITATION TO SOMETHING EXCEPTIONAL') -->
+<section class="w-full px-margin-mobile py-space-xl bg-surface-container-high flex flex-col relative overflow-hidden">
+<div class="flex flex-col gap-2 max-w-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary rounded-full"></span>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-[0.25em]">PRIVATE SALON ACCESS</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary leading-tight">
+        An Invitation to Something Exceptional.
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+        Be first to receive private viewing access for limited atelier runs, architectural essays, and intimate salon dispatches.
+      </p>
+</div>
+<!-- Newsletter Input Form -->
+<div class="flex flex-col gap-3 mt-space-md" id="newsletter-form-container">
+<div class="flex flex-col bg-surface p-1 shadow-sm">
+<label class="sr-only" for="circle-email">Enter your private email</label>
+<input class="w-full px-4 py-3 bg-transparent font-body-md text-body-md text-primary placeholder:text-on-surface-variant focus:outline-none" id="circle-email" placeholder="Enter your private email address" type="email"/>
+</div>
+<button class="w-full py-4 bg-secondary text-on-secondary font-label-caps-md text-label-caps-md tracking-[0.25em] uppercase hover:bg-on-secondary-fixed-variant transition-colors shadow-sm" id="newsletter-submit">
+        JOIN THE CIRCLE
+      </button>
+<div class="flex items-center gap-2 text-on-surface-variant pt-1">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="font-body-sm text-body-sm">Discreet communication exclusively. No commercial frequency abuse.</span>
+</div>
+</div>
+<!-- Newsletter Feedback (hidden state) -->
+<div class="hidden p-space-sm bg-surface text-primary shadow-sm mt-space-md flex flex-col gap-1" id="newsletter-success">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span class="font-label-caps-md text-label-caps-md uppercase tracking-wider">INVITATION REGISTERED</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        A monographic introduction has been sent to your private inbox. Welcome to the Zorroxo Circle.
+      </p>
+</div>
+</section>
+<!-- Interactive JavaScript -->
+<script>
+    // Wishlist Toggle Micro-interaction
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const icon = btn.querySelector('.material-symbols-outlined');
+        const isFilled = icon.style.fontVariationSettings?.includes("'FILL' 1");
+        
+        if (isFilled) {
+          icon.style.fontVariationSettings = "'FILL' 0";
+          btn.classList.remove('text-secondary');
+          btn.classList.add('text-primary');
+        } else {
+          icon.style.fontVariationSettings = "'FILL' 1";
+          btn.classList.remove('text-primary');
+          btn.classList.add('text-secondary');
+        }
+      });
+    });
+
+    // Quick Add Micro-interaction
+    document.querySelectorAll('.quick-add-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const originalText = btn.innerHTML;
+        btn.innerHTML = `<span class="material-symbols-outlined text-[16px] animate-spin">sync</span> ADDED`;
+        btn.classList.add('bg-secondary', 'text-on-secondary');
+        
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.classList.remove('bg-secondary', 'text-on-secondary');
+        }, 1800);
+      });
+    });
+
+    // Bestseller Category Filtering
+    const tabs = document.querySelectorAll('.bestseller-tab');
+    const items = document.querySelectorAll('.bestseller-item');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.dataset.filter;
+        
+        tabs.forEach(t => {
+          t.classList.remove('bg-primary', 'text-on-primary');
+          t.classList.add('bg-surface', 'text-on-surface-variant');
+        });
+        
+        tab.classList.remove('bg-surface', 'text-on-surface-variant');
+        tab.classList.add('bg-primary', 'text-on-primary');
+
+        items.forEach(item => {
+          if (filter === 'all' || item.dataset.cat === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Newsletter Submission Delight
+    const newsletterSubmit = document.getElementById('newsletter-submit');
+    const newsletterContainer = document.getElementById('newsletter-form-container');
+    const newsletterSuccess = document.getElementById('newsletter-success');
+    const emailInput = document.getElementById('circle-email');
+
+    if (newsletterSubmit && emailInput) {
+      newsletterSubmit.addEventListener('click', () => {
+        if (emailInput.value.includes('@') && emailInput.value.includes('.')) {
+          newsletterContainer.classList.add('hidden');
+          newsletterSuccess.classList.remove('hidden');
+        } else {
+          emailInput.focus();
+          emailInput.placeholder = 'Please enter a valid email address';
+        }
+      });
+    }
+  </script>
+</div><footer class="w-full bg-primary text-on-primary mt-space-lg pt-space-lg pb-space-xl px-margin-mobile"><div class="flex flex-col gap-space-md"><div class="flex flex-col gap-2"><span class="font-headline-sm text-headline-sm uppercase tracking-[0.2em] text-surface">ZORROXO</span><p class="font-body-sm text-body-sm text-on-primary-container max-w-sm">Cultivating deliberate objects of rare permanence. Architecture, high craft, and monastic minimalism for the contemporary collector.</p></div><div class="flex flex-col gap-space-xs"><span class="font-label-caps-md text-label-caps-md text-secondary-fixed uppercase tracking-widest">VIP Concierge Dispatch</span><p class="font-body-sm text-body-sm text-on-primary-container">Receive private previews and monographic releases.</p><div class="flex mt-2"><input class="bg-primary-container text-surface px-4 py-3 font-body-sm text-body-sm flex-1 focus:outline-none placeholder:text-on-primary-container" placeholder="ENTER YOUR EMAIL" type="email"/><button class="bg-secondary text-on-secondary px-6 font-label-caps-md text-label-caps-md uppercase tracking-wider">Join</button></div></div><div class="grid grid-cols-2 gap-space-sm pt-space-xs"><div class="flex flex-col gap-2"><span class="font-label-caps-sm text-label-caps-sm text-secondary-fixed uppercase">Curations</span><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" href="#">New Objects</a><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" href="#">Editions</a><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" href="#">Archives</a></div><div class="flex flex-col gap-2"><span class="font-label-caps-sm text-label-caps-sm text-secondary-fixed uppercase">Client Care</span><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" href="#">Concierge Desk</a><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" data-path="order-tracking" href="#">Order Status</a><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" href="#">Complimentary Returns</a></div></div><div class="flex flex-col gap-3 pt-space-xs"><div class="flex items-center gap-3 text-on-primary-container"><span class="font-label-caps-sm text-label-caps-sm tracking-widest">SECURE TRANSACTION</span><div class="flex gap-2 text-xs opacity-75"><span class="px-1.5 py-0.5 bg-primary-container">AMEX</span><span class="px-1.5 py-0.5 bg-primary-container">APPLE PAY</span><span class="px-1.5 py-0.5 bg-primary-container">VISA</span></div></div><span class="font-label-caps-sm text-label-caps-sm text-on-primary-container">© 2025 ZORROXO MAISON. ALL RIGHTS RESERVED.</span></div></div></footer></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.06)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-20 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] p-1 transition-colors text-primary font-semibold" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">home</span><span class="font-label-caps-sm text-label-caps-sm mt-0.5">Home</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] p-1 text-on-surface-variant transition-colors" data-path="explore-shop" href="#"><span class="material-symbols-outlined text-[22px]">grid_view</span><span class="font-label-caps-sm text-label-caps-sm mt-0.5">Shop</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] p-1 text-on-surface-variant transition-colors relative" data-path="saved-wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="font-label-caps-sm text-label-caps-sm mt-0.5">Saved</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] p-1 text-on-surface-variant transition-colors relative" data-path="shopping-bag" href="#"><div class="relative"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute -top-1 -right-2 w-3.5 h-3.5 bg-secondary text-surface text-[8px] font-bold flex items-center justify-center rounded-full">2</span></div><span class="font-label-caps-sm text-label-caps-sm mt-0.5">Bag</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] p-1 text-on-surface-variant transition-colors" data-path="client-account" href="#"><span class="material-symbols-outlined text-[22px]">person</span><span class="font-label-caps-sm text-label-caps-sm mt-0.5">Account</span></a></div></nav><script>const openBtn = document.getElementById('drawer-open'); const closeBtn = document.getElementById('drawer-close'); const drawer = document.getElementById('menu-drawer'); const backdrop = document.getElementById('drawer-backdrop'); const panel = drawer ? drawer.querySelector('aside') : null; function toggleDrawer(show) { if(!drawer || !panel) return; if(show) { drawer.classList.remove('pointer-events-none'); drawer.classList.add('opacity-100'); panel.classList.remove('-translate-x-full'); } else { drawer.classList.add('pointer-events-none'); drawer.classList.remove('opacity-100'); panel.classList.add('-translate-x-full'); } } if(openBtn) openBtn.addEventListener('click', () => toggleDrawer(true)); if(closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false)); if(backdrop) backdrop.addEventListener('click', () => toggleDrawer(false));</script></body></html>

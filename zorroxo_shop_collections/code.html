@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-fixed-variant": "#56442e", "on-secondary-container": "#756149", "primary-container": "#22221f", "error": "#ba1a1a", "on-tertiary-fixed": "#211b0f", "inverse-primary": "#c8c6c1", "on-error-container": "#93000a", "surface-container-low": "#f7f3eb", "on-secondary-fixed": "#271907", "on-primary-container": "#8a8985", "inverse-on-surface": "#f4f0e8", "inverse-surface": "#31302b", "primary": "#0b0c09", "primary-fixed-dim": "#c8c6c1", "surface-container-high": "#ece8e0", "on-surface-variant": "#474741", "tertiary": "#100b03", "on-surface": "#1c1c17", "surface-tint": "#5f5e5b", "on-primary-fixed-variant": "#474743", "secondary": "#6f5b44", "tertiary-fixed": "#eee1cd", "surface-container-lowest": "#ffffff", "surface-variant": "#e6e2da", "on-tertiary-container": "#938877", "primary-fixed": "#e5e2dd", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#4e4637", "outline": "#787770", "on-background": "#1c1c17", "on-error": "#ffffff", "tertiary-fixed-dim": "#d2c5b2", "tertiary-container": "#282115", "secondary-fixed-dim": "#dcc2a6", "surface-bright": "#fdf9f1", "surface": "#fdf9f1", "secondary-fixed": "#fadec0", "on-primary-fixed": "#1c1c19", "surface-container-highest": "#e6e2da", "background": "#fdf9f1", "error-container": "#ffdad6", "surface-dim": "#dddad2", "outline-variant": "#c8c7be", "on-secondary": "#ffffff", "surface-container": "#f1ede5", "on-tertiary": "#ffffff", "secondary-container": "#fadec0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-mobile": "1rem", "space-sm": "1rem", "margin-mobile": "1.5rem", "margin": "4rem", "gutter": "2rem", "space-xs": "0.5rem", "space-md": "1.75rem", "space-lg": "3rem", "space-xl": "5.5rem" }, "fontFamily": { "body-md": ["Plus Jakarta Sans"], "headline-md": ["Playfair Display"], "headline-lg": ["Playfair Display"], "body-sm": ["Plus Jakarta Sans"], "display-lg": ["Playfair Display"], "headline-sm": ["Playfair Display"], "display-lg-mobile": ["Playfair Display"], "display-xl-mobile": ["Playfair Display"], "body-lg": ["Plus Jakarta Sans"], "display-xl": ["Playfair Display"], "label-caps-sm": ["Plus Jakarta Sans"], "label-caps-md": ["Plus Jakarta Sans"] }, "fontSize": { "body-md": ["0.9375rem", { "lineHeight": "1.6rem", "letterSpacing": "0em", "fontWeight": "400" }], "headline-md": ["1.875rem", { "lineHeight": "2.375rem", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-sm": ["0.8125rem", { "lineHeight": "1.375rem", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg": ["4rem", { "lineHeight": "4.5rem", "letterSpacing": "-0.015em", "fontWeight": "400" }], "headline-sm": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "display-xl-mobile": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-lg": ["1.125rem", { "lineHeight": "1.875rem", "letterSpacing": "-0.005em", "fontWeight": "400" }], "display-xl": ["5.5rem", { "lineHeight": "6rem", "letterSpacing": "-0.02em", "fontWeight": "400" }], "label-caps-sm": ["0.625rem", { "lineHeight": "0.875rem", "letterSpacing": "0.22em", "fontWeight": "600" }], "label-caps-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.18em", "fontWeight": "600" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen relative"><header class="fixed top-0 w-full z-50 pt-safe"><div class="bg-secondary text-secondary-fixed text-center py-1.5 px-space-xs font-label-caps-sm text-label-caps-sm tracking-widest uppercase">DISCOVER THE NEW STANDARD OF EVERYDAY LUXURY.</div><div class="h-20 bg-surface/90 backdrop-blur-xl px-margin-mobile flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-xs"><button aria-label="Open Menu" class="w-11 h-11 flex items-center justify-center text-primary" id="drawer-open"><span class="material-symbols-outlined text-[24px]">menu</span></button><button aria-label="Search Catalog" class="w-11 h-11 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[22px]">search</span></button></div><div class="flex flex-col items-center justify-center"><span class="font-headline-sm text-headline-sm uppercase tracking-[0.25em] text-primary font-normal">ZORROXO</span><span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase -mt-1">Explore Shop</span></div><div class="flex items-center gap-space-xs"><a class="w-11 h-11 relative flex items-center justify-center text-primary" data-path="saved-wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="absolute top-2 right-2 w-4 h-4 bg-secondary text-surface text-[9px] font-bold flex items-center justify-center rounded-full">3</span></a><a class="w-11 h-11 relative flex items-center justify-center text-primary" data-path="shopping-bag" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute top-2 right-2 w-4 h-4 bg-primary text-surface text-[9px] font-bold flex items-center justify-center rounded-full">2</span></a><img alt="Profile" class="w-8 h-8 rounded-full object-cover ml-1" src="https://lh3.googleusercontent.com/aida/AEtjO1X2vk_tMzom5JTWS_TNZ549VwZdxQ3rFPnGHy2DdiuJf2H7TyGjpevZG6w_mgDaf14UenmmyYfqDvVtEn7MQ-rUdE-f-8te9W-yKRJ-7-GJjZiT1UqpVfE9SgucO98DgvJ2j0RHD5AdadMSs9bVGF97QBr405H-1TiHBgEZ4NFdZZFipkkHv5FDAynRBVvX3cPM7QNVfm3o-zWCPi40nvSL8LtBoTRlaXysP0xwuzG4"/></div></div></header><div class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0" id="menu-drawer"><div class="absolute inset-0 bg-primary/40 backdrop-blur-sm transition-opacity" id="drawer-backdrop"></div><aside class="absolute top-0 left-0 bottom-0 w-[85%] max-w-sm bg-surface flex flex-col justify-between pt-safe pb-safe shadow-2xl -translate-x-full transition-transform duration-300 overflow-y-auto"><div class="p-margin-mobile flex flex-col"><div class="flex items-center justify-between pb-space-sm"><span class="font-headline-sm text-headline-sm uppercase tracking-[0.25em] text-primary">ZORROXO</span><button aria-label="Close Menu" class="w-11 h-11 flex items-center justify-center text-primary" id="drawer-close"><span class="material-symbols-outlined">close</span></button></div><nav class="flex flex-col gap-space-xs mt-space-sm"><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="home" href="#">Home</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="explore-shop" href="#">Shop</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="curated-collections" href="#">Collections</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="about-maison" href="#">About</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="editorial-journal" href="#">Journal</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="client-account" href="#">Account</a><a class="py-2.5 font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" data-path="order-tracking" href="#">Order Tracking</a></nav></div><div class="p-margin-mobile bg-surface-container-low flex flex-col gap-space-sm"><div class="flex items-center justify-between"><span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Currency</span><div class="flex gap-space-xs"><button class="font-label-caps-sm text-label-caps-sm px-2 py-1 bg-primary text-on-primary">USD</button><button class="font-label-caps-sm text-label-caps-sm px-2 py-1 text-on-surface-variant hover:text-primary">EUR</button><button class="font-label-caps-sm text-label-caps-sm px-2 py-1 text-on-surface-variant hover:text-primary">JPY</button></div></div><div class="flex flex-col gap-1"><span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Personal Concierge</span><a class="font-body-sm text-body-sm text-primary hover:text-secondary" href="#">concierge@zorroxo.com</a><span class="font-body-sm text-body-sm text-on-surface-variant">+1 (800) 492-7790</span></div></div></aside></div><main class="flex flex-col relative w-full pt-20 bg-surface pb-32"><div class="flex flex-col w-full">
+<!-- Collection Editorial Masthead -->
+<section class="px-margin-mobile pt-6 pb-5 flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-[0.25em]">Curation Archive № 04</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">THE COMPLETE COLLECTION</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">68 Curated Pieces Designed for Modern Permanence. Precision craft, unhurried materiality, and monastic restraint.</p>
+</section>
+<!-- Sticky Faceted Filter & View Switcher Bar -->
+<aside class="sticky top-20 z-40 bg-surface/95 backdrop-blur-md shadow-sm py-3 px-margin-mobile flex flex-col gap-2.5">
+<div class="flex items-center justify-between gap-2">
+<!-- Filter Trigger Button -->
+<button class="flex items-center gap-1.5 bg-primary text-on-primary px-3.5 py-2 transition-colors active:bg-secondary" id="filterModalOpen">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span class="font-label-caps-md text-label-caps-md uppercase tracking-wider">Filter (3)</span>
+</button>
+<!-- Active Filter Pill Preview Strip -->
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-1 pl-1">
+<button class="flex items-center gap-1 bg-surface-container text-on-surface px-3 py-2 shrink-0 active:bg-surface-container-high transition-colors" id="sortDropdownTrigger">
+<span class="font-label-caps-sm text-label-caps-sm uppercase">Sort:</span>
+<span class="font-label-caps-sm text-label-caps-sm uppercase font-semibold text-secondary" id="currentSortLabel">Featured</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+<button class="filter-quick-pill bg-surface-container-high text-on-surface px-3 py-2 shrink-0 flex items-center gap-1 transition-all" data-active="true">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-caps-sm text-label-caps-sm uppercase">In Stock</span>
+</button>
+<button class="filter-quick-pill bg-surface-container text-on-surface-variant px-3 py-2 shrink-0 transition-all hover:text-on-surface" data-active="false">
+<span class="font-label-caps-sm text-label-caps-sm uppercase">Technology</span>
+</button>
+<button class="filter-quick-pill bg-surface-container text-on-surface-variant px-3 py-2 shrink-0 transition-all hover:text-on-surface" data-active="false">
+<span class="font-label-caps-sm text-label-caps-sm uppercase">Living</span>
+</button>
+<button class="filter-quick-pill bg-surface-container text-on-surface-variant px-3 py-2 shrink-0 transition-all hover:text-on-surface" data-active="false">
+<span class="font-label-caps-sm text-label-caps-sm uppercase">Apparel</span>
+</button>
+</div>
+<!-- Layout Grid Toggle (2-Col vs 1-Col Spotlight) -->
+<div class="flex items-center bg-surface-container p-0.5 shrink-0">
+<button aria-label="Two-column catalog grid" class="w-8 h-8 flex items-center justify-center bg-surface-container-lowest text-primary shadow-sm transition-all" id="viewGrid2Col">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+</button>
+<button aria-label="Single column spotlight magazine layout" class="w-8 h-8 flex items-center justify-center text-on-surface-variant transition-all" id="viewGrid1Col">
+<span class="material-symbols-outlined text-[18px]">splitscreen</span>
+</button>
+</div>
+</div>
+<!-- Active Filter Micro-Summary Badges -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface-variant shrink-0 uppercase">Active:</span>
+<span class="bg-surface-container-lowest text-on-surface px-2 py-1 font-label-caps-sm text-label-caps-sm flex items-center gap-1 shrink-0">
+        Category: All
+      </span>
+<span class="bg-surface-container-lowest text-on-surface px-2 py-1 font-label-caps-sm text-label-caps-sm flex items-center gap-1 shrink-0">
+        $200 — $3,000
+      </span>
+<span class="bg-surface-container-lowest text-on-surface px-2 py-1 font-label-caps-sm text-label-caps-sm flex items-center gap-1 shrink-0">
+        In Stock
+      </span>
+<button class="font-label-caps-sm text-label-caps-sm text-secondary hover:text-primary uppercase tracking-widest shrink-0 ml-1 underline decoration-secondary" id="resetFiltersBtn">Reset</button>
+</div>
+</aside>
+<!-- Interactive Sort Dropdown Modal/Sheet -->
+<div class="fixed inset-0 z-50 bg-primary/40 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-200" id="sortMenuBackdrop">
+<div class="absolute bottom-0 inset-x-0 bg-surface shadow-2xl p-margin-mobile flex flex-col gap-3 translate-y-full transition-transform duration-300" id="sortMenuPanel">
+<div class="flex items-center justify-between pb-2">
+<span class="font-label-caps-md text-label-caps-md uppercase tracking-widest text-secondary">Sort Objects By</span>
+<button class="w-8 h-8 flex items-center justify-center text-primary" id="sortMenuClose">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<button class="sort-option w-full py-3 px-3 text-left font-body-md text-body-md flex items-center justify-between bg-surface-container text-primary font-semibold" data-sort="Featured">
+<span>Featured &amp; Curated</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">check</span>
+</button>
+<button class="sort-option w-full py-3 px-3 text-left font-body-md text-body-md flex items-center justify-between text-on-surface-variant hover:bg-surface-container hover:text-primary" data-sort="New Releases">
+<span>Newest Editions</span>
+<span class="material-symbols-outlined text-[18px] opacity-0">check</span>
+</button>
+<button class="sort-option w-full py-3 px-3 text-left font-body-md text-body-md flex items-center justify-between text-on-surface-variant hover:bg-surface-container hover:text-primary" data-sort="Price: Low to High">
+<span>Price: Low to High</span>
+<span class="material-symbols-outlined text-[18px] opacity-0">check</span>
+</button>
+<button class="sort-option w-full py-3 px-3 text-left font-body-md text-body-md flex items-center justify-between text-on-surface-variant hover:bg-surface-container hover:text-primary" data-sort="Price: High to Low">
+<span>Price: High to Low</span>
+<span class="material-symbols-outlined text-[18px] opacity-0">check</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Faceted Filter Drawer -->
+<div class="fixed inset-0 z-50 bg-primary/45 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300" id="filterDrawerModal">
+<div class="absolute bottom-0 inset-x-0 max-h-[751px] bg-surface flex flex-col shadow-2xl translate-y-full transition-transform duration-300 overflow-hidden" id="filterDrawerContent">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between px-margin-mobile py-4 bg-surface shadow-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">tune</span>
+<span class="font-headline-sm text-headline-sm text-primary">Refine Curation</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-primary" id="filterModalClose">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<!-- Drawer Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-margin-mobile flex flex-col gap-6">
+<!-- Category Section -->
+<div class="flex flex-col gap-2.5">
+<span class="font-label-caps-md text-label-caps-md text-secondary uppercase tracking-widest">Discipline</span>
+<div class="grid grid-cols-2 gap-2">
+<button class="category-chip py-2.5 px-3 text-left font-label-caps-sm text-label-caps-sm uppercase bg-primary text-on-primary">All Disciplines</button>
+<button class="category-chip py-2.5 px-3 text-left font-label-caps-sm text-label-caps-sm uppercase bg-surface-container text-on-surface hover:bg-surface-container-high">Acoustics &amp; Sound</button>
+<button class="category-chip py-2.5 px-3 text-left font-label-caps-sm text-label-caps-sm uppercase bg-surface-container text-on-surface hover:bg-surface-container-high">Haute Horology</button>
+<button class="category-chip py-2.5 px-3 text-left font-label-caps-sm text-label-caps-sm uppercase bg-surface-container text-on-surface hover:bg-surface-container-high">Living &amp; Hearth</button>
+<button class="category-chip py-2.5 px-3 text-left font-label-caps-sm text-label-caps-sm uppercase bg-surface-container text-on-surface hover:bg-surface-container-high">Fine Leathercraft</button>
+<button class="category-chip py-2.5 px-3 text-left font-label-caps-sm text-label-caps-sm uppercase bg-surface-container text-on-surface hover:bg-surface-container-high">Textiles &amp; Robes</button>
+</div>
+</div>
+<!-- Price Range Slider Section -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="font-label-caps-md text-label-caps-md text-secondary uppercase tracking-widest">Acquisition Price</span>
+<span class="font-body-sm text-body-sm font-semibold text-primary" id="priceDisplay">$200 — $2,500</span>
+</div>
+<div class="relative w-full py-2">
+<input class="w-full accent-secondary cursor-pointer" id="priceSlider" max="3000" min="200" step="50" type="range" value="2500"/>
+</div>
+<div class="flex justify-between text-on-surface-variant font-label-caps-sm text-label-caps-sm">
+<span>$200</span>
+<span>$1,500</span>
+<span>$3,000+</span>
+</div>
+</div>
+<!-- Materiality Filter -->
+<div class="flex flex-col gap-2.5">
+<span class="font-label-caps-md text-label-caps-md text-secondary uppercase tracking-widest">Material Spectrum</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-surface-container-low text-primary font-label-caps-sm text-label-caps-sm uppercase cursor-pointer hover:bg-secondary hover:text-on-secondary transition-colors">Titanium Grade 5</span>
+<span class="px-3 py-1.5 bg-surface-container-low text-primary font-label-caps-sm text-label-caps-sm uppercase cursor-pointer hover:bg-secondary hover:text-on-secondary transition-colors">Tivoli Travertine</span>
+<span class="px-3 py-1.5 bg-surface-container-low text-primary font-label-caps-sm text-label-caps-sm uppercase cursor-pointer hover:bg-secondary hover:text-on-secondary transition-colors">Obsidian Marble</span>
+<span class="px-3 py-1.5 bg-surface-container-low text-primary font-label-caps-sm text-label-caps-sm uppercase cursor-pointer hover:bg-secondary hover:text-on-secondary transition-colors">Loro Cashmere</span>
+<span class="px-3 py-1.5 bg-surface-container-low text-primary font-label-caps-sm text-label-caps-sm uppercase cursor-pointer hover:bg-secondary hover:text-on-secondary transition-colors">Full-Grain Bridle</span>
+</div>
+</div>
+<!-- Availability Toggle -->
+<div class="flex items-center justify-between bg-surface-container-low p-3.5">
+<div class="flex flex-col">
+<span class="font-label-caps-md text-label-caps-md text-primary uppercase">Immediate Dispatch Only</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Excludes bespoke made-to-order commissions</span>
+</div>
+<input checked="" class="w-5 h-5 accent-secondary cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="p-margin-mobile bg-surface-container flex items-center gap-3">
+<button class="w-1/3 py-3.5 bg-surface text-primary font-label-caps-md text-label-caps-md uppercase tracking-wider active:bg-surface-container-high transition-colors text-center" id="filterResetAction">Reset</button>
+<button class="w-2/3 py-3.5 bg-primary text-on-primary font-label-caps-md text-label-caps-md uppercase tracking-widest active:bg-secondary transition-colors text-center" id="filterApplyAction">View 68 Results</button>
+</div>
+</div>
+</div>
+<!-- Toast Notification for Micro-Interactions -->
+<div class="fixed top-24 inset-x-4 z-50 bg-primary text-on-primary p-3 flex items-center justify-between shadow-xl opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-2" id="toastNotification">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed">check_circle</span>
+<span class="font-body-sm text-body-sm text-surface" id="toastMessage">Item added to your curation bag.</span>
+</div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary-fixed uppercase tracking-wider">VIEW</span>
+</div>
+<!-- Primary Product Listing Layout (Grid Responsive) -->
+<section class="px-margin-mobile pt-4 pb-8">
+<div class="grid grid-cols-2 gap-x-3 gap-y-6 transition-all duration-300" id="productsGrid">
+<!-- PRODUCT 1: Aethel Headphones -->
+<article class="product-card group flex flex-col bg-surface-container-lowest transition-shadow hover:shadow-md">
+<!-- Visual Container -->
+<div class="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="High-end sculptural titanium over-ear headphones on an ivory monolithic stone pedestal with warm diffused studio lighting, deep architectural shadows, metallic brushed finish, minimalist Scandinavian luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRVDm-Ht9Ps3ZxjOojcjyRhQyU3-A4btDuFk7rnjv5Lm33bWt-eA5Kg3R0-02rQMiL5dksr_4K3zcF37NbRTLggraQE9IxSZl7NbKAjCf4TSOLlnGQuhLPCpYRGXJ4WSJ2Yykzw-PCbjvtj2Duh8e1K-iy3Qlvbw9pL1U5DM95worfZHhfDUGhLWuKlMdsy5-bWhhMa70uT6agjk41IfLUTHJz6g4CGGN3byhemmx1"/>
+<!-- Tag / Badge -->
+<div class="absolute top-2.5 left-2.5">
+<span class="bg-secondary text-secondary-fixed px-2 py-0.5 font-label-caps-sm text-label-caps-sm uppercase tracking-wider">Limited Release</span>
+</div>
+<!-- Wishlist Heart Button -->
+<button aria-label="Save to Wishlist" class="wishlist-toggle absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-sm flex items-center justify-center text-primary shadow-xs transition-transform active:scale-90" data-saved="false">
+<span class="material-symbols-outlined text-[18px] transition-colors">favorite_border</span>
+</button>
+<!-- Quick Add Micro-bar overlay -->
+<button class="quick-add-btn absolute bottom-0 inset-x-0 py-2.5 bg-primary/95 text-on-primary flex items-center justify-center gap-1.5 transition-all opacity-95 active:bg-secondary" data-product="Aethel Master Over-Ear">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-widest">+ Quick Add</span>
+</button>
+</div>
+<!-- Card Body -->
+<div class="p-3 flex flex-col gap-1.5 flex-1 justify-between bg-surface-container-lowest">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Acoustics</span>
+<div class="flex items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps-sm text-label-caps-sm font-semibold">4.9</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-primary-container">(42)</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary tracking-tight leading-snug line-clamp-2">Aethel Studio Master Over-Ear Headphones</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Titanium Grade 5 · Lambskin earcups</p>
+</div>
+<div class="pt-2 flex items-baseline justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-normal">$780</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-secondary-container uppercase">№ 18 / 100</span>
+</div>
+</div>
+</article>
+<!-- PRODUCT 2: Caelum Trench -->
+<article class="product-card group flex flex-col bg-surface-container-lowest transition-shadow hover:shadow-md">
+<!-- Visual Container -->
+<div class="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Model wearing an artisanal long hand-woven oatmeal cashmere trench coat standing against an architectural concrete and lime-wash interior, natural dramatic raking light, understated monastic elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRHvNuOVWQneEl1uufHN9vY_ak-C4PCT-aQT3yiepTAizMjpjEFu3dMCsVO9GiLOym5UqEb4Mp3xC6o7VQWiLRCRlLcOAmsf5c5euiSeZS9gULjZG_4w5xQFv4qyaJ_7hQc0vtOcu_aBczFY3AJ9apSpTVtXiPLX6v8p4f3LG3O3LS3Mdio5mIBrEyKiBUj-sPeylvM271hQFNCVhUHDQfmEpBQjU3O8jARzZfkGgM"/>
+<div class="absolute top-2.5 left-2.5">
+<span class="bg-primary text-on-primary px-2 py-0.5 font-label-caps-sm text-label-caps-sm uppercase tracking-wider">Made to Order</span>
+</div>
+<button aria-label="Save to Wishlist" class="wishlist-toggle absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-sm flex items-center justify-center text-primary shadow-xs transition-transform active:scale-90" data-saved="false">
+<span class="material-symbols-outlined text-[18px] transition-colors">favorite_border</span>
+</button>
+<button class="quick-add-btn absolute bottom-0 inset-x-0 py-2.5 bg-primary/95 text-on-primary flex items-center justify-center gap-1.5 transition-all opacity-95 active:bg-secondary" data-product="Caelum Cashmere Trench">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-widest">+ Quick Add</span>
+</button>
+</div>
+<!-- Card Body -->
+<div class="p-3 flex flex-col gap-1.5 flex-1 justify-between bg-surface-container-lowest">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Haute Atelier</span>
+<div class="flex items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps-sm text-label-caps-sm font-semibold">5.0</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-primary-container">(18)</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary tracking-tight leading-snug line-clamp-2">Caelum Hand-Woven Cashmere Trench</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Double-faced virgin Mongolian cashmere</p>
+</div>
+<div class="pt-2 flex items-baseline justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-normal">$1,650</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface-variant uppercase">3 Wks Lead</span>
+</div>
+</div>
+</article>
+<!-- PRODUCT 3: Komorebi Diffuser -->
+<article class="product-card group flex flex-col bg-surface-container-lowest transition-shadow hover:shadow-md">
+<!-- Visual Container -->
+<div class="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Monolithic carved obsidian black marble aroma diffuser with a single curling wisp of ultrasonic mist in a warm earthen wabi-sabi room with raw linen backdrop and soft morning light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzwhX-6Ash77XXLoEtVZStPyxIYgGJny-WZ_YIQhpEZh2E2kIIa1P5Ee3SyhUt98N8rbJindkpjmK2SvbSyG0SPQED-0iQYtHt2GA9PcvszcUu4Dj9L5edCWqG84Laj1SYuOSG3wt5UpY9a1fKPb0VxneTAQRRvSRebCXZ3j7w-hxJMwMFCN0iGC-xeKw15eiHjQ-tFxSR0DuDKVK7bOjy20yilGGbOwvNOyFE8ICD"/>
+<div class="absolute top-2.5 left-2.5">
+<span class="bg-surface-container-high text-primary px-2 py-0.5 font-label-caps-sm text-label-caps-sm uppercase tracking-wider font-semibold">Bestseller</span>
+</div>
+<button aria-label="Save to Wishlist" class="wishlist-toggle absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-sm flex items-center justify-center text-primary shadow-xs transition-transform active:scale-90" data-saved="true">
+<span class="material-symbols-outlined text-[18px] text-secondary transition-colors" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<button class="quick-add-btn absolute bottom-0 inset-x-0 py-2.5 bg-primary/95 text-on-primary flex items-center justify-center gap-1.5 transition-all opacity-95 active:bg-secondary" data-product="Komorebi Obsidian Diffuser">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-widest">+ Quick Add</span>
+</button>
+</div>
+<!-- Card Body -->
+<div class="p-3 flex flex-col gap-1.5 flex-1 justify-between bg-surface-container-lowest">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Sanctuary</span>
+<div class="flex items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps-sm text-label-caps-sm font-semibold">4.8</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-primary-container">(89)</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary tracking-tight leading-snug line-clamp-2">Komorebi Obsidian Marble Diffuser</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Solid Nero Marquina · Silent Ultrasonic</p>
+</div>
+<div class="pt-2 flex items-baseline justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-normal">$320</span>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">In Stock</span>
+</div>
+</div>
+</article>
+<!-- PRODUCT 4: Kallos Automatic Watch -->
+<article class="product-card group flex flex-col bg-surface-container-lowest transition-shadow hover:shadow-md">
+<!-- Visual Container -->
+<div class="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Minimalist luxury automatic dress watch 39mm with an unadorned parchment textured dial, blued steel hands, and a tan cordovan leather strap resting on raw warm limestone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq7TvbIZ82I18-SGggNh3ItwyybGDSBLZpq_jO5AzV9vkAH3j2BOxXISUwLv3MBxwLbrIow7B9yympwX1QTQkIqHNAigXkkS9_IBHxpIlBRtjakKalA8uHx94wdfg9JXtO4rJFwm6V0NEWDyXd8g5lBGVcdJXW3pEdSu7MgRSIj4OrKlauXKKwO7MJCuvS_kXw3xdRj23IvknrZhNQr5O2vM1i-YYD9o9ndhzGrMJ1"/>
+<button aria-label="Save to Wishlist" class="wishlist-toggle absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-sm flex items-center justify-center text-primary shadow-xs transition-transform active:scale-90" data-saved="false">
+<span class="material-symbols-outlined text-[18px] transition-colors">favorite_border</span>
+</button>
+<button class="quick-add-btn absolute bottom-0 inset-x-0 py-2.5 bg-primary/95 text-on-primary flex items-center justify-center gap-1.5 transition-all opacity-95 active:bg-secondary" data-product="Kallos 39mm Watch">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-widest">+ Quick Add</span>
+</button>
+</div>
+<!-- Card Body -->
+<div class="p-3 flex flex-col gap-1.5 flex-1 justify-between bg-surface-container-lowest">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Horology</span>
+<div class="flex items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps-sm text-label-caps-sm font-semibold">4.9</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-primary-container">(27)</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary tracking-tight leading-snug line-clamp-2">Kallos Minimalist Automatic 39mm Watch</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Swiss Calibre · 68h Power Reserve</p>
+</div>
+<div class="pt-2 flex items-baseline justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-normal">$1,890</span>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Numbered</span>
+</div>
+</div>
+</article>
+<!-- PRODUCT 5: Valen Leather Briefcase -->
+<article class="product-card group flex flex-col bg-surface-container-lowest transition-shadow hover:shadow-md">
+<!-- Visual Container -->
+<div class="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Architectural briefcase in rich vegetable-tanned saddle brown Italian leather with solid brass hand-hammered hardware placed on an aged oak study desk in soft atmospheric daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB9tYYpJLKetzGrXhgpCUihg5qzbKLFEvnTm9oDoE19RVd3fjCF8VnDQZQjjSv1MiiZ2tBdZXWHWsxb_RU0_ew_wQKDRZUVvTUBARltVUtk2gTpjgNodH-rMr_93zBvFoSQrmbrCkqcjulU6g_XjF_JZAVU8feJiq3x6a2AHfxtgdv8R5IgDXzxShZXmUkMPPebsJ7GjcMSMjsjDWESA5qSC19rDwx4FRRV5xrVzdy"/>
+<button aria-label="Save to Wishlist" class="wishlist-toggle absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-sm flex items-center justify-center text-primary shadow-xs transition-transform active:scale-90" data-saved="false">
+<span class="material-symbols-outlined text-[18px] transition-colors">favorite_border</span>
+</button>
+<button class="quick-add-btn absolute bottom-0 inset-x-0 py-2.5 bg-primary/95 text-on-primary flex items-center justify-center gap-1.5 transition-all opacity-95 active:bg-secondary" data-product="Valen Saddle Briefcase">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-widest">+ Quick Add</span>
+</button>
+</div>
+<!-- Card Body -->
+<div class="p-3 flex flex-col gap-1.5 flex-1 justify-between bg-surface-container-lowest">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Marroquinerie</span>
+<div class="flex items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps-sm text-label-caps-sm font-semibold">4.9</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-primary-container">(53)</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary tracking-tight leading-snug line-clamp-2">Valen Italian Saddle Leather Briefcase</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Full-grain Tuscan hide · Raw brass</p>
+</div>
+<div class="pt-2 flex items-baseline justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-normal">$980</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface-variant uppercase">Crafted in Milan</span>
+</div>
+</div>
+</article>
+<!-- PRODUCT 6: Aura Travertine Table Light -->
+<article class="product-card group flex flex-col bg-surface-container-lowest transition-shadow hover:shadow-md">
+<!-- Visual Container -->
+<div class="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Monolithic cylindrical ambient table lamp carved from Italian warm cream travertine with glowing warm incandescent diffuser, sitting on an untreated wood credenza at twilight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz1Lfu6UUSjQGS7yu3norJDRrxBZvTRFXD4AiOldRDsRprTZdecZEWCNMpk9ArgWlx8MAfKh5vF53ciNhC4QtPqWHp-XNAGdZjafOpA6UW7q8EekczM5DkmBT-MlDUHqSnM6iGmfOsasC9KFlF-rhn-8_zUadDi1cxkc87HUgmaPccIyyWdcJ2nHz_w5AHBTAS3ldrwsNkdvuDDJJlaLOZQWy19Uh1BnqploH0kVSI"/>
+<button aria-label="Save to Wishlist" class="wishlist-toggle absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-sm flex items-center justify-center text-primary shadow-xs transition-transform active:scale-90" data-saved="false">
+<span class="material-symbols-outlined text-[18px] transition-colors">favorite_border</span>
+</button>
+<button class="quick-add-btn absolute bottom-0 inset-x-0 py-2.5 bg-primary/95 text-on-primary flex items-center justify-center gap-1.5 transition-all opacity-95 active:bg-secondary" data-product="Aura Travertine Lamp">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-widest">+ Quick Add</span>
+</button>
+</div>
+<!-- Card Body -->
+<div class="p-3 flex flex-col gap-1.5 flex-1 justify-between bg-surface-container-lowest">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Illumination</span>
+<div class="flex items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps-sm text-label-caps-sm font-semibold">4.7</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-primary-container">(31)</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary tracking-tight leading-snug line-clamp-2">Aura Ambient Travertine Table Light</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Natural porous stone · Touch dimmer</p>
+</div>
+<div class="pt-2 flex items-baseline justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-normal">$540</span>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase">Low Stock</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Editorial Monograph Banner Accent -->
+<section class="mx-margin-mobile mb-8 bg-surface-container-low p-6 flex flex-col gap-3">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-[0.25em]">Maison Note</span>
+<blockquote class="font-headline-sm text-headline-sm text-primary italic leading-snug">
+      "We design against the transient. Every proportion is derived from architectural scale, meant to outlast trends."
+    </blockquote>
+<div class="flex items-center gap-2 pt-1">
+<span class="w-6 h-px bg-secondary"></span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface-variant uppercase">Atelier Zorroxo, Kyoto &amp; Milan</span>
+</div>
+</section>
+<!-- Luxury Pagination / Infinite Catalog Progression -->
+<section class="px-margin-mobile pb-12 flex flex-col items-center gap-4 text-center">
+<div class="flex flex-col items-center gap-1.5 w-full max-w-xs">
+<div class="flex justify-between w-full font-label-caps-sm text-label-caps-sm text-on-surface-variant uppercase">
+<span>Showing 6 of 68 items</span>
+<span class="font-semibold text-primary">9%</span>
+</div>
+<!-- Subtle architectural hairline progress indicator -->
+<div class="w-full h-1 bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary transition-all duration-500 w-[9%]" id="catalogProgress"></div>
+</div>
+</div>
+<!-- Infinite Load Trigger Button -->
+<button class="w-full max-w-xs py-3.5 bg-transparent border-0 text-primary font-label-caps-md text-label-caps-md uppercase tracking-[0.2em] bg-surface-container hover:bg-secondary hover:text-on-secondary active:scale-[0.99] transition-all flex items-center justify-center gap-2" id="loadMoreBtn">
+<span id="loadBtnText">Load More Pieces</span>
+<span class="material-symbols-outlined text-[16px] animate-spin hidden" id="loadSpinner">progress_activity</span>
+</button>
+<a class="font-label-caps-sm text-label-caps-sm text-on-surface-variant uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1 mt-1" href="#">
+<span>Back to Peak Curation</span>
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+</a>
+</section>
+</div>
+<script>
+  // DOM References
+  const filterOpenBtn = document.getElementById('filterModalOpen');
+  const filterCloseBtn = document.getElementById('filterModalClose');
+  const filterDrawerModal = document.getElementById('filterDrawerModal');
+  const filterDrawerContent = document.getElementById('filterDrawerContent');
+  const filterApplyBtn = document.getElementById('filterApplyAction');
+  const filterResetBtn = document.getElementById('filterResetAction');
+  const resetFiltersBarBtn = document.getElementById('resetFiltersBtn');
+
+  const sortTrigger = document.getElementById('sortDropdownTrigger');
+  const sortBackdrop = document.getElementById('sortMenuBackdrop');
+  const sortPanel = document.getElementById('sortMenuPanel');
+  const sortCloseBtn = document.getElementById('sortMenuClose');
+  const sortOptions = document.querySelectorAll('.sort-option');
+  const currentSortLabel = document.getElementById('currentSortLabel');
+
+  const view2ColBtn = document.getElementById('viewGrid2Col');
+  const view1ColBtn = document.getElementById('viewGrid1Col');
+  const productsGrid = document.getElementById('productsGrid');
+
+  const toast = document.getElementById('toastNotification');
+  const toastMsg = document.getElementById('toastMessage');
+
+  const priceSlider = document.getElementById('priceSlider');
+  const priceDisplay = document.getElementById('priceDisplay');
+
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  const loadBtnText = document.getElementById('loadBtnText');
+  const loadSpinner = document.getElementById('loadSpinner');
+  const catalogProgress = document.getElementById('catalogProgress');
+
+  // Filter Drawer Open / Close Handlers
+  function openFilterDrawer() {
+    filterDrawerModal.classList.remove('pointer-events-none');
+    filterDrawerModal.classList.add('opacity-100');
+    filterDrawerContent.classList.remove('translate-y-full');
+  }
+
+  function closeFilterDrawer() {
+    filterDrawerModal.classList.add('pointer-events-none');
+    filterDrawerModal.classList.remove('opacity-100');
+    filterDrawerContent.classList.add('translate-y-full');
+  }
+
+  if (filterOpenBtn) filterOpenBtn.addEventListener('click', openFilterDrawer);
+  if (filterCloseBtn) filterCloseBtn.addEventListener('click', closeFilterDrawer);
+  if (filterDrawerModal) {
+    filterDrawerModal.addEventListener('click', (e) => {
+      if (e.target === filterDrawerModal) closeFilterDrawer();
+    });
+  }
+
+  // Sort Menu Drawer Handlers
+  function openSortMenu() {
+    sortBackdrop.classList.remove('pointer-events-none');
+    sortBackdrop.classList.add('opacity-100');
+    sortPanel.classList.remove('translate-y-full');
+  }
+
+  function closeSortMenu() {
+    sortBackdrop.classList.add('pointer-events-none');
+    sortBackdrop.classList.remove('opacity-100');
+    sortPanel.classList.add('translate-y-full');
+  }
+
+  if (sortTrigger) sortTrigger.addEventListener('click', openSortMenu);
+  if (sortCloseBtn) sortCloseBtn.addEventListener('click', closeSortMenu);
+  if (sortBackdrop) {
+    sortBackdrop.addEventListener('click', (e) => {
+      if (e.target === sortBackdrop) closeSortMenu();
+    });
+  }
+
+  sortOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      const selectedSort = opt.getAttribute('data-sort');
+      if (currentSortLabel) currentSortLabel.textContent = selectedSort.split(':')[0].trim();
+      sortOptions.forEach(o => {
+        o.classList.remove('bg-surface-container', 'text-primary', 'font-semibold');
+        o.classList.add('text-on-surface-variant');
+        const icon = o.querySelector('.material-symbols-outlined');
+        if (icon) icon.classList.add('opacity-0');
+      });
+      opt.classList.add('bg-surface-container', 'text-primary', 'font-semibold');
+      opt.classList.remove('text-on-surface-variant');
+      const activeIcon = opt.querySelector('.material-symbols-outlined');
+      if (activeIcon) activeIcon.classList.remove('opacity-0');
+      closeSortMenu();
+      showToast(`Catalog sorted by: ${selectedSort}`);
+    });
+  });
+
+  // Price Slider Live Readout
+  if (priceSlider && priceDisplay) {
+    priceSlider.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value).toLocaleString();
+      priceDisplay.textContent = `$200 — $${val}`;
+    });
+  }
+
+  // Quick Horizontal Filter Pill Toggles
+  const quickPills = document.querySelectorAll('.filter-quick-pill');
+  quickPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const isActive = pill.getAttribute('data-active') === 'true';
+      if (isActive) {
+        pill.setAttribute('data-active', 'false');
+        pill.classList.remove('bg-surface-container-high', 'text-on-surface');
+        pill.classList.add('bg-surface-container', 'text-on-surface-variant');
+      } else {
+        pill.setAttribute('data-active', 'true');
+        pill.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        pill.classList.add('bg-surface-container-high', 'text-on-surface');
+      }
+    });
+  });
+
+  // Category Filter Chips in Modal
+  const catChips = document.querySelectorAll('.category-chip');
+  catChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      catChips.forEach(c => {
+        c.classList.remove('bg-primary', 'text-on-primary');
+        c.classList.add('bg-surface-container', 'text-on-surface');
+      });
+      chip.classList.remove('bg-surface-container', 'text-on-surface');
+      chip.classList.add('bg-primary', 'text-on-primary');
+    });
+  });
+
+  // Grid Switcher (2-Column vs Spotlight 1-Column)
+  if (view2ColBtn && view1ColBtn && productsGrid) {
+    view2ColBtn.addEventListener('click', () => {
+      productsGrid.classList.remove('grid-cols-1');
+      productsGrid.classList.add('grid-cols-2');
+      view2ColBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+      view2ColBtn.classList.remove('text-on-surface-variant');
+      view1ColBtn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+      view1ColBtn.classList.add('text-on-surface-variant');
+    });
+
+    view1ColBtn.addEventListener('click', () => {
+      productsGrid.classList.remove('grid-cols-2');
+      productsGrid.classList.add('grid-cols-1');
+      view1ColBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+      view1ColBtn.classList.remove('text-on-surface-variant');
+      view2ColBtn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+      view2ColBtn.classList.add('text-on-surface-variant');
+    });
+  }
+
+  // Toast Functionality
+  let toastTimer = null;
+  function showToast(message) {
+    if (!toast) return;
+    if (toastMsg) toastMsg.textContent = message;
+    toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+      toast.classList.remove('opacity-100', 'translate-y-0');
+    }, 2800);
+  }
+
+  // Wishlist Toggle
+  const wishlistButtons = document.querySelectorAll('.wishlist-toggle');
+  wishlistButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isSaved = btn.getAttribute('data-saved') === 'true';
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (isSaved) {
+        btn.setAttribute('data-saved', 'false');
+        icon.textContent = 'favorite_border';
+        icon.style.fontVariationSettings = "'FILL' 0";
+        icon.classList.remove('text-secondary');
+        showToast('Removed piece from your wishlist');
+      } else {
+        btn.setAttribute('data-saved', 'true');
+        icon.textContent = 'favorite';
+        icon.style.fontVariationSettings = "'FILL' 1";
+        icon.classList.add('text-secondary');
+        showToast('Saved piece to your personal wishlist');
+      }
+    });
+  });
+
+  // Quick Add Interactions
+  const quickAddBtns = document.querySelectorAll('.quick-add-btn');
+  quickAddBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const title = btn.getAttribute('data-product') || 'Deliberate Object';
+      showToast(`Added '${title}' to your shopping bag.`);
+    });
+  });
+
+  // Filter Drawer Apply / Reset Actions
+  if (filterApplyBtn) {
+    filterApplyBtn.addEventListener('click', () => {
+      closeFilterDrawer();
+      showToast('Filters updated: 68 pieces displayed.');
+    });
+  }
+  if (filterResetBtn) {
+    filterResetBtn.addEventListener('click', () => {
+      closeFilterDrawer();
+      showToast('Filters restored to default.');
+    });
+  }
+  if (resetFiltersBarBtn) {
+    resetFiltersBarBtn.addEventListener('click', () => {
+      showToast('Active filters cleared.');
+    });
+  }
+
+  // Load More Simulation
+  if (loadMoreBtn && loadSpinner && loadBtnText && catalogProgress) {
+    loadMoreBtn.addEventListener('click', () => {
+      loadBtnText.textContent = 'Retrieving Archival Pieces...';
+      loadSpinner.classList.remove('hidden');
+      loadMoreBtn.disabled = true;
+
+      setTimeout(() => {
+        loadBtnText.textContent = 'Catalog Fully Loaded';
+        loadSpinner.classList.add('hidden');
+        catalogProgress.style.width = '24%';
+        showToast('6 additional curated objects appended.');
+        setTimeout(() => {
+          loadBtnText.textContent = 'Load More Pieces';
+          loadMoreBtn.disabled = false;
+        }, 1500);
+      }, 1000);
+    });
+  }
+</script><footer class="w-full bg-primary text-on-primary mt-space-lg pt-space-lg pb-space-xl px-margin-mobile"><div class="flex flex-col gap-space-md"><div class="flex flex-col gap-2"><span class="font-headline-sm text-headline-sm uppercase tracking-[0.2em] text-surface">ZORROXO</span><p class="font-body-sm text-body-sm text-on-primary-container max-w-sm">Cultivating deliberate objects of rare permanence. Architecture, high craft, and monastic minimalism for the contemporary collector.</p></div><div class="flex flex-col gap-space-xs"><span class="font-label-caps-md text-label-caps-md text-secondary-fixed uppercase tracking-widest">VIP Concierge Dispatch</span><p class="font-body-sm text-body-sm text-on-primary-container">Receive private previews and monographic releases.</p><div class="flex mt-2"><input class="bg-primary-container text-surface px-4 py-3 font-body-sm text-body-sm flex-1 focus:outline-none placeholder:text-on-primary-container" placeholder="ENTER YOUR EMAIL" type="email"/><button class="bg-secondary text-on-secondary px-6 font-label-caps-md text-label-caps-md uppercase tracking-wider">Join</button></div></div><div class="grid grid-cols-2 gap-space-sm pt-space-xs"><div class="flex flex-col gap-2"><span class="font-label-caps-sm text-label-caps-sm text-secondary-fixed uppercase">Curations</span><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" href="#">New Objects</a><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" href="#">Editions</a><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" href="#">Archives</a></div><div class="flex flex-col gap-2"><span class="font-label-caps-sm text-label-caps-sm text-secondary-fixed uppercase">Client Care</span><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" href="#">Concierge Desk</a><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" data-path="order-tracking" href="#">Order Status</a><a class="font-body-sm text-body-sm text-on-primary-container hover:text-surface" href="#">Complimentary Returns</a></div></div><div class="flex flex-col gap-3 pt-space-xs"><div class="flex items-center gap-3 text-on-primary-container"><span class="font-label-caps-sm text-label-caps-sm tracking-widest">SECURE TRANSACTION</span><div class="flex gap-2 text-xs opacity-75"><span class="px-1.5 py-0.5 bg-primary-container">AMEX</span><span class="px-1.5 py-0.5 bg-primary-container">APPLE PAY</span><span class="px-1.5 py-0.5 bg-primary-container">VISA</span></div></div><span class="font-label-caps-sm text-label-caps-sm text-on-primary-container">© 2025 ZORROXO MAISON. ALL RIGHTS RESERVED.</span></div></div></footer></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.06)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] p-1 text-on-surface-variant transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">home</span><span class="font-label-caps-sm text-label-caps-sm mt-0.5">Home</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] p-1 transition-colors text-primary font-semibold" data-path="explore-shop" href="#"><span class="material-symbols-outlined text-[22px]">grid_view</span><span class="font-label-caps-sm text-label-caps-sm mt-0.5">Shop</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] p-1 text-on-surface-variant transition-colors relative" data-path="saved-wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="font-label-caps-sm text-label-caps-sm mt-0.5">Saved</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] p-1 text-on-surface-variant transition-colors relative" data-path="shopping-bag" href="#"><div class="relative"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute -top-1 -right-2 w-3.5 h-3.5 bg-secondary text-surface text-[8px] font-bold flex items-center justify-center rounded-full">2</span></div><span class="font-label-caps-sm text-label-caps-sm mt-0.5">Bag</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] p-1 text-on-surface-variant transition-colors" data-path="client-account" href="#"><span class="material-symbols-outlined text-[22px]">person</span><span class="font-label-caps-sm text-label-caps-sm mt-0.5">Account</span></a></div></nav><script>const openBtn = document.getElementById('drawer-open'); const closeBtn = document.getElementById('drawer-close'); const drawer = document.getElementById('menu-drawer'); const backdrop = document.getElementById('drawer-backdrop'); const panel = drawer ? drawer.querySelector('aside') : null; function toggleDrawer(show) { if(!drawer || !panel) return; if(show) { drawer.classList.remove('pointer-events-none'); drawer.classList.add('opacity-100'); panel.classList.remove('-translate-x-full'); } else { drawer.classList.add('pointer-events-none'); drawer.classList.remove('opacity-100'); panel.classList.add('-translate-x-full'); } } if(openBtn) openBtn.addEventListener('click', () => toggleDrawer(true)); if(closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false)); if(backdrop) backdrop.addEventListener('click', () => toggleDrawer(false));</script></body></html>

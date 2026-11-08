@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-fixed-variant": "#56442e", "on-secondary-container": "#756149", "primary-container": "#22221f", "error": "#ba1a1a", "on-tertiary-fixed": "#211b0f", "inverse-primary": "#c8c6c1", "on-error-container": "#93000a", "surface-container-low": "#f7f3eb", "on-secondary-fixed": "#271907", "on-primary-container": "#8a8985", "inverse-on-surface": "#f4f0e8", "inverse-surface": "#31302b", "primary": "#0b0c09", "primary-fixed-dim": "#c8c6c1", "surface-container-high": "#ece8e0", "on-surface-variant": "#474741", "tertiary": "#100b03", "on-surface": "#1c1c17", "surface-tint": "#5f5e5b", "on-primary-fixed-variant": "#474743", "secondary": "#6f5b44", "tertiary-fixed": "#eee1cd", "surface-container-lowest": "#ffffff", "surface-variant": "#e6e2da", "on-tertiary-container": "#938877", "primary-fixed": "#e5e2dd", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#4e4637", "outline": "#787770", "on-background": "#1c1c17", "on-error": "#ffffff", "tertiary-fixed-dim": "#d2c5b2", "tertiary-container": "#282115", "secondary-fixed-dim": "#dcc2a6", "surface-bright": "#fdf9f1", "surface": "#fdf9f1", "secondary-fixed": "#fadec0", "on-primary-fixed": "#1c1c19", "surface-container-highest": "#e6e2da", "background": "#fdf9f1", "error-container": "#ffdad6", "surface-dim": "#dddad2", "outline-variant": "#c8c7be", "on-secondary": "#ffffff", "surface-container": "#f1ede5", "on-tertiary": "#ffffff", "secondary-container": "#fadec0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-mobile": "1rem", "space-sm": "1rem", "margin-mobile": "1.5rem", "margin": "4rem", "gutter": "2rem", "space-xs": "0.5rem", "space-md": "1.75rem", "space-lg": "3rem", "space-xl": "5.5rem" }, "fontFamily": { "body-md": ["Plus Jakarta Sans"], "headline-md": ["Playfair Display"], "headline-lg": ["Playfair Display"], "body-sm": ["Plus Jakarta Sans"], "display-lg": ["Playfair Display"], "headline-sm": ["Playfair Display"], "display-lg-mobile": ["Playfair Display"], "display-xl-mobile": ["Playfair Display"], "body-lg": ["Plus Jakarta Sans"], "display-xl": ["Playfair Display"], "label-caps-sm": ["Plus Jakarta Sans"], "label-caps-md": ["Plus Jakarta Sans"] }, "fontSize": { "body-md": ["0.9375rem", { "lineHeight": "1.6rem", "letterSpacing": "0em", "fontWeight": "400" }], "headline-md": ["1.875rem", { "lineHeight": "2.375rem", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-sm": ["0.8125rem", { "lineHeight": "1.375rem", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg": ["4rem", { "lineHeight": "4.5rem", "letterSpacing": "-0.015em", "fontWeight": "400" }], "headline-sm": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "display-xl-mobile": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-lg": ["1.125rem", { "lineHeight": "1.875rem", "letterSpacing": "-0.005em", "fontWeight": "400" }], "display-xl": ["5.5rem", { "lineHeight": "6rem", "letterSpacing": "-0.02em", "fontWeight": "400" }], "label-caps-sm": ["0.625rem", { "lineHeight": "0.875rem", "letterSpacing": "0.22em", "fontWeight": "600" }], "label-caps-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.18em", "fontWeight": "600" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen relative"><header class="fixed top-0 w-full z-50 pt-safe"><div class="h-16 bg-surface/90 backdrop-blur-xl px-margin-mobile flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-xs"><button aria-label="Go Back" class="w-11 h-11 flex items-center justify-center text-primary" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><h1 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">Product Details</h1></div><div class="flex items-center gap-space-xs"><button aria-label="Share Item" class="w-11 h-11 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[22px]">share</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover ml-1" src="https://lh3.googleusercontent.com/aida/AEtjO1X2vk_tMzom5JTWS_TNZ549VwZdxQ3rFPnGHy2DdiuJf2H7TyGjpevZG6w_mgDaf14UenmmyYfqDvVtEn7MQ-rUdE-f-8te9W-yKRJ-7-GJjZiT1UqpVfE9SgucO98DgvJ2j0RHD5AdadMSs9bVGF97QBr405H-1TiHBgEZ4NFdZZFipkkHv5FDAynRBVvX3cPM7QNVfm3o-zWCPi40nvSL8LtBoTRlaXysP0xwuzG4"/></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface pb-safe"><div class="flex flex-col w-full text-on-surface">
+<!-- Micro Breadcrumb Bar -->
+<nav aria-label="Breadcrumb" class="px-margin-mobile pt-space-xs pb-2 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+<a class="font-label-caps-sm text-label-caps-sm text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap" href="#">HOME</a>
+<span class="text-on-surface-variant text-[10px]">/</span>
+<a class="font-label-caps-sm text-label-caps-sm text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap" href="#">TECHNOLOGY &amp; OBJECTS</a>
+<span class="text-on-surface-variant text-[10px]">/</span>
+<a class="font-label-caps-sm text-label-caps-sm text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap" href="#">AUDIO</a>
+<span class="text-on-surface-variant text-[10px]">/</span>
+<span class="font-label-caps-sm text-label-caps-sm text-primary font-semibold whitespace-nowrap">AETHEL STUDIO</span>
+</nav>
+<!-- Interactive Visual Stage / Gallery -->
+<section class="relative w-full px-margin-mobile flex flex-col gap-3">
+<!-- Main Active Frame -->
+<div class="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden group shadow-sm">
+<div class="relative w-full h-full flex transition-transform duration-500 ease-out" id="gallery-container">
+<div class="min-w-full h-full relative">
+<img class="w-full h-full object-cover" data-alt="High-end luxury over-ear headphones sitting on a warm beige alabaster pedestal. Sculptural matte obsidian black aluminum earcups with brushed bronze metallic accents and hand-stitched Tuscan leather headband. Dramatic soft museum lighting, minimalist editorial atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvCKQFfZrUMaeD76s7EKcyPQdy5aMgwfGspRywnelcpFaXuU4HLWpP7XKTcTVZxz8Ku5aZJWzkiRK185SPijPF4KEthWmd_uP8n3PfTyMYPoJu5GCBHJWAv9Eju12JvoPWRf0Ptf2cE76BVY7IgrRs9z5_2_xKL0ifmXZhBqx_nHsG4ZEM1vSKoJF9pbCzoKWK5sFcczjRnKar5Uz0rm__fImxBYJJ_LRtQu76QJK3"/>
+</div>
+<div class="min-w-full h-full relative">
+<img class="w-full h-full object-cover" data-alt="Side profile architectural view of luxury matte black headphones. Precision laser-etched acoustic grille, precision machined bronze swivel hinge, muted earthen luxury studio aesthetic, neutral warm ivory background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXernJs-8T7cuqCG6u8ftoseRXCN4PZxHCV01jGi2IiXNyPduC4mRDSrMXgKqfKC2s4WU4WbPXjjOmT0gbzBCm3xy18esC5J9kkeeRK5GrvKABVrUwSNwGlLiBx9goauNJ9B0GBrG9mfCVKCfnynVVvyz6GKA-CP85N3bgD4PyfAS7PJ7_cX2pLqLvobtWxUwZ4flApGH-4l0GrHGm0_ejyMwtRJ9QUc4r4kaXW79x"/>
+</div>
+<div class="min-w-full h-full relative">
+<img class="w-full h-full object-cover" data-alt="Macro close-up shot of rich textured full-grain black Nappa leather ear cushion with microscopic sound perforations and bronze acoustic core weave. Tactile depth, soft chiaroscuro studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-QIikl5fOvzuAWuBP1lJ0qat7QBBR1uQIWqR6SUk7_Z3QxJyrGgqsPrBasTEAu1sSwNfalLixb1PKQpFfk_9Ti_HEa8yCWa2py49IicqGfKWi1Obec1t8GnIkKRzI7K0XsgdFjh8eaFIshu59QesVLOFUaPthM9BW9YlaVXnTKzhJAyuJJnQmoB86HZNPne6765O0DterN2YVlWaG3HodOR9qvsuOTU5GAB8MlPKn"/>
+</div>
+<div class="min-w-full h-full relative">
+<img class="w-full h-full object-cover" data-alt="Milled aircraft-grade aluminum carry vault shell open, revealing tailored velvet interior molded specifically for headphones and woven braided cables. High craftsmanship, discreet bronze ZORROXO logo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9YGF7UY6uMcKs74lkFbcn4YXzphfeTnSXQ_HH3fwUrVN9JJ7WtXg-TYsognXRBmZK_l4DEmpd2cd_lQexPBSX6e0wUrn-nIyczF0wqGcyEbUkDSIkqjGeDfeRxLRWkNNnuOPZ6lLleCopGt_ZeG96d52GoeNZ2H3ZssYOOsEjIrYsVukXfXcqoeWdliSND_UhsOqXMqTgL57rCxLuYtZ9vbYJ33QPBbYP_V3fl10H"/>
+</div>
+<div class="min-w-full h-full relative">
+<img class="w-full h-full object-cover" data-alt="Editorial portrait of an elegant model in a cashmere coat wearing obsidian and bronze studio headphones against an understated travertine gallery wall. Serene, refined, cinematic natural sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpehAVGx-yG1bqdqUNaK6uBTw-yIoPm-Vjk2M5lLkZkr6Mmu2HMSvN9Z49YA_Fv4cAhZ4Kl4qPMydoipS_5XU0wqD_CFrgxA4SgQCvWg1qpl_LVV8fbjQpqFjRxJKwcDPHDKFUXYimbnbVAzE5hVHc1MQCOezkRxaUMldST1hNplSjC-joI9haG0D9bEEhOrnIw3y2XcJwO_vVK8P3k3U4nDMw-uiLk7uNntvKfDQr"/>
+</div>
+</div>
+<!-- Overlaid Badges & Controls -->
+<div class="absolute top-3 left-3 bg-surface-container-lowest/80 backdrop-blur-md px-2.5 py-1 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+<span class="font-label-caps-sm text-label-caps-sm text-primary tracking-widest">LIMITED RUN • 250 UNITS</span>
+</div>
+<div class="absolute top-3 right-3 bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[15px] text-primary">zoom_in</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface">PINCH ZOOM</span>
+</div>
+<!-- Pagination Counter Pill -->
+<div class="absolute bottom-3 left-1/2 -translate-x-1/2 bg-primary/80 backdrop-blur-md text-surface px-3 py-1 flex items-center gap-1.5 shadow-sm">
+<span class="font-label-caps-sm text-label-caps-sm tracking-widest text-surface" id="gallery-counter">IMAGE 1 / 5</span>
+</div>
+</div>
+<!-- Thumbnail Strip -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+<button aria-label="View Hero Shot" class="thumb-btn flex-shrink-0 w-16 h-20 bg-surface-container-low transition-all duration-300 opacity-100 shadow-sm" onclick="setGallerySlide(0)">
+<img class="w-full h-full object-cover" data-alt="Miniature front profile of obsidian luxury headphones on stone plinth in soft warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAME0be7jjFInP5jVs64Zql6f1bej0ap1oBhWsld10PD0q-WQLyd17eNB8cBP8xcGeW8cFz7fc0GqkAwsuAYDrZUtk4j7kYvExCDJRn2C7doCkFuz195tG5ojz8egCG_FWJumNw-P61Kg-9fMVzuDiRQqUE5O-KAu-rQQh3rKSXu4uKL4ibP2tdYiGCgTPY0AKb9-P_p4z_P_i24o-0f0TJIy5EtfGgQ4Iw3fRSwJ66"/>
+</button>
+<button aria-label="View Side Profile" class="thumb-btn flex-shrink-0 w-16 h-20 bg-surface-container-low transition-all duration-300 opacity-50 shadow-sm" onclick="setGallerySlide(1)">
+<img class="w-full h-full object-cover" data-alt="Miniature side acoustic driver profile of headphones in soft focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ_GiDybcCeDq9pvZzC1xO67TSArAxZXdlINoIidPhaf1tfcJqhb6GYQPeZJnJY6N2S8EVYtEhKJhyDLrR1WbxyMVIYCJDFin4drXJiEPWSAU46MR5za6gqgP9LHHaUEm2wnTnaAVhaFlQFbr_xT-HJD2Muppa8vY2JESSBkZjbRcRukXVdg0e6-R0P925FZJGaMU0wamfTLxZtCvYxe6jWU40fvXMC88gofVINgQ0"/>
+</button>
+<button aria-label="View Cushion Texture" class="thumb-btn flex-shrink-0 w-16 h-20 bg-surface-container-low transition-all duration-300 opacity-50 shadow-sm" onclick="setGallerySlide(2)">
+<img class="w-full h-full object-cover" data-alt="Miniature macro leather cushion texture shot with tactile stitch details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrAxOg2ksbER39lqr7dF0NPw6QaXMlYPE-HbmPUmgZTMuFdiqVCha3CkJQhGzLOQ956mUUuPhn9dpAWh1hLDoxARG-XUUKR30NFg52YYqPIR8tkAZCGZN-DkPHEKNRb90dxEzJga5-mGMS_1QLISp6WDo68-04U9vTppw5drvOjXNXhd3mylKJAUHGcwFIDJ5ah6d28fGqgMskNvTHSZz_6DW5cGXP09_eIpfjnLLt"/>
+</button>
+<button aria-label="View Aluminum Case" class="thumb-btn flex-shrink-0 w-16 h-20 bg-surface-container-low transition-all duration-300 opacity-50 shadow-sm" onclick="setGallerySlide(3)">
+<img class="w-full h-full object-cover" data-alt="Miniature view of luxury aluminum vault travel case for headphones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Dqrxc5XW0aSg1x6Fg0u8zsn_2hEKN9jvIMTsex_p-fl_pqeMpiwIG1zRQqjhAAuxu2jm47zdh7zPAi0cGBu9_mnvcbThPi8go4eKBw84Feht0PD9-mBAiYZvBxnseeAL2YG87iF8ubieSqitEGEIWmhP0g8IYiX_Nc042WmQL1I8XhbPvsnWLkqXIRpipQmPsdM0n6_LTgQmlgBGJD_2U8NpQKgrZ7jefQJ7VCzt"/>
+</button>
+<button aria-label="View Lifestyle" class="thumb-btn flex-shrink-0 w-16 h-20 bg-surface-container-low transition-all duration-300 opacity-50 shadow-sm" onclick="setGallerySlide(4)">
+<img class="w-full h-full object-cover" data-alt="Miniature lifestyle portrait wearing headphones in cashmere apparel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwfXr1Ihi9Jot8KGBkUTTylbYx-0sajQZA9T1D-HjT0WfhxrgOcb8vBn7U7tebasPOF7cz4l-30Qh7mvNE-yWxjA5OCAN0wEdjsxWPq6lsemhOf0s2VPcXGC8VmwvhyqB7YjaCn0m6wxJUqwceAqaavBSk1EEMKFcs7npoZHtFj7xjmF9cVtfnbYMGwqXeeY_K_IcqnXVEStUySrDtZbMwxr-1mviDqXkE3ECx9aoP"/>
+</button>
+</div>
+</section>
+<!-- Product Details Header -->
+<section class="px-margin-mobile pt-space-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="font-label-caps-md text-label-caps-md text-secondary tracking-widest">MAISON ACOUSTICS • EDITION 01</span>
+<span class="bg-secondary-container px-2 py-0.5 text-on-secondary-container font-label-caps-sm text-label-caps-sm uppercase">Curator's Selection</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary font-normal leading-tight">
+      Aethel Studio Master Over-Ear
+    </h2>
+<!-- Ratings Bar & Social Validation -->
+<div class="flex items-center gap-2 py-1">
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">5.0</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(48 Verified Patrons)</span>
+<span class="text-on-surface-variant text-xs">•</span>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-wider">Sound Archive Gold</span>
+</div>
+<!-- Pricing Module -->
+<div class="bg-surface-container-low p-4 flex flex-col gap-1 shadow-sm mt-1">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-primary font-normal" id="display-price">$780 USD</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface-variant uppercase">Taxes &amp; Duties Incl.</span>
+</div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary bg-surface px-2 py-0.5 shadow-sm">IN STOCK</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">payments</span>
+        Or 4 interest-free payments of <span class="text-primary font-medium" id="installment-price">$195</span> with Klarna or Affirm.
+      </p>
+</div>
+</section>
+<!-- Luxury Bespoke Customizer Panel -->
+<section class="px-margin-mobile pt-space-md flex flex-col gap-5">
+<!-- Finish / Hue Selector -->
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<label class="font-label-caps-md text-label-caps-md text-primary uppercase">1. Finish &amp; Chassis Tone</label>
+<span class="font-body-sm text-body-sm text-secondary font-medium" id="selected-finish-name">Matte Obsidian</span>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="color-swatch-btn p-2 bg-surface-container flex flex-col items-center gap-1.5 shadow-sm transition-all duration-200 ring-offset-2" onclick="selectColor(this, 'Matte Obsidian', '#0b0c09')">
+<span class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-surface text-[14px]">check</span>
+</span>
+<span class="font-label-caps-sm text-label-caps-sm text-primary uppercase">Obsidian</span>
+</button>
+<button class="color-swatch-btn p-2 bg-surface-container flex flex-col items-center gap-1.5 shadow-sm transition-all duration-200 opacity-60" onclick="selectColor(this, 'Sand Champagne', '#fadec0')">
+<span class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-transparent text-[14px]">check</span>
+</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface uppercase">Champagne</span>
+</button>
+<button class="color-swatch-btn p-2 bg-surface-container flex flex-col items-center gap-1.5 shadow-sm transition-all duration-200 opacity-60" onclick="selectColor(this, 'Brushed Bronze', '#6f5b44')">
+<span class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-transparent text-[14px]">check</span>
+</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface uppercase">Bronze</span>
+</button>
+<button class="color-swatch-btn p-2 bg-surface-container flex flex-col items-center gap-1.5 shadow-sm transition-all duration-200 opacity-60" onclick="selectColor(this, 'Smoked Silver', '#c8c7be')">
+<span class="w-8 h-8 rounded-full bg-outline-variant flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-transparent text-[14px]">check</span>
+</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface uppercase">Silver</span>
+</button>
+</div>
+</div>
+<!-- Cushion Material Selector -->
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<label class="font-label-caps-md text-label-caps-md text-primary uppercase">2. Acoustic Cushion Texture</label>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface-variant uppercase" id="cushion-badge">Included</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<button class="cushion-opt p-3 text-left bg-primary-container text-on-primary shadow-sm flex flex-col justify-between transition-all" id="cushion-nappa" onclick="selectCushion(this, 0, 'Tuscan Nappa Leather')">
+<div class="flex items-start justify-between w-full">
+<span class="font-body-md text-body-md font-medium text-surface-bright">Nappa Leather</span>
+<span class="material-symbols-outlined text-[16px] text-surface-bright">check_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-inverse-primary mt-1">Supple, natural acoustic seal</p>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary-fixed mt-2 uppercase tracking-wider">Default Atelier Choice</span>
+</button>
+<button class="cushion-opt p-3 text-left bg-surface-container text-on-surface shadow-sm flex flex-col justify-between transition-all opacity-80 hover:opacity-100" id="cushion-alcantara" onclick="selectCushion(this, 50, 'Italian Alcantara Velvet')">
+<div class="flex items-start justify-between w-full">
+<span class="font-body-md text-body-md font-medium">Alcantara Velvet</span>
+<span class="material-symbols-outlined text-[16px] text-transparent">check_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Breathable, plush tactile warmth</p>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary mt-2 uppercase tracking-wider">+ $50 USD</span>
+</button>
+</div>
+</div>
+<!-- Monogram Engraving Option -->
+<div class="bg-surface-container-low p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">brush</span>
+<div>
+<span class="font-label-caps-md text-label-caps-md text-primary uppercase block">3. Precision Monogram Engraving</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Laser inscribed inside the right headband</span>
+</div>
+</div>
+<button aria-label="Toggle Engraving" class="w-12 h-6 bg-surface-container-high rounded-full p-0.5 transition-colors relative flex items-center" id="engraving-toggle-btn" onclick="toggleEngraving()">
+<span class="w-5 h-5 bg-surface-container-lowest rounded-full transition-transform transform translate-x-0 shadow-sm" id="engraving-toggle-dot"></span>
+</button>
+</div>
+<!-- Monogram Input Field (Expandable) -->
+<div class="hidden flex-col gap-2 pt-2" id="engraving-input-box">
+<div class="flex items-center justify-between">
+<label class="font-label-caps-sm text-label-caps-sm text-on-surface-variant uppercase" for="monogram-text">Initials (Up to 3 Letters)</label>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary">+ $45 USD</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest px-3 py-2.5 font-headline-sm text-headline-sm tracking-widest text-primary uppercase placeholder:text-on-surface-variant/40 focus:outline-none focus:bg-surface shadow-inner" id="monogram-text" maxlength="3" oninput="updateMonogram(this.value)" placeholder="Z.R.X" type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2">
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface-variant font-mono">SERIF</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">Crafted by master engravers in Milan. Custom items are final sale.</p>
+</div>
+</div>
+</section>
+<!-- Editorial Product Narratives & Accordions -->
+<section class="px-margin-mobile pt-space-lg flex flex-col gap-3">
+<div class="flex items-center gap-2 pb-1">
+<span class="material-symbols-outlined text-[18px] text-secondary">architecture</span>
+<h3 class="font-label-caps-md text-label-caps-md text-primary uppercase tracking-widest">Architectural Specifications</h3>
+</div>
+<!-- Accordion 1 -->
+<div class="bg-surface-container-low shadow-sm">
+<button class="w-full p-4 flex items-center justify-between text-left" onclick="toggleAccordion('acc-1')">
+<span class="font-body-md text-body-md font-medium text-primary">Acoustic Architecture &amp; Drivers</span>
+<span class="material-symbols-outlined text-primary text-[20px] transition-transform duration-300" id="acc-1-icon">expand_more</span>
+</button>
+<div class="hidden px-4 pb-4 flex flex-col gap-3 text-on-surface-variant font-body-sm text-body-sm" id="acc-1">
+<p>Custom 45mm Planar Magnetic neodymium transducers assembled by hand in Graz, Austria. Features zero-diffraction resonance chambers paired with ultra-thin dual-sided beryllium diaphragms.</p>
+<div class="grid grid-cols-2 gap-2 pt-2">
+<div class="p-2.5 bg-surface-container">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary block uppercase">Frequency Response</span>
+<span class="font-body-sm text-body-sm text-primary font-medium">4 Hz – 48,000 Hz</span>
+</div>
+<div class="p-2.5 bg-surface-container">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary block uppercase">Chassis Shielding</span>
+<span class="font-body-sm text-body-sm text-primary font-medium">Aircraft Billet 6061</span>
+</div>
+<div class="p-2.5 bg-surface-container">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary block uppercase">Battery Endurance</span>
+<span class="font-body-sm text-body-sm text-primary font-medium">42 Hours Active ANC</span>
+</div>
+<div class="p-2.5 bg-surface-container">
+<span class="font-label-caps-sm text-label-caps-sm text-secondary block uppercase">Audio Codecs</span>
+<span class="font-body-sm text-body-sm text-primary font-medium">LDAC, aptX HD, AAC</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion 2 -->
+<div class="bg-surface-container-low shadow-sm">
+<button class="w-full p-4 flex items-center justify-between text-left" onclick="toggleAccordion('acc-2')">
+<span class="font-body-md text-body-md font-medium text-primary">Sustainable Materials &amp; Provenance</span>
+<span class="material-symbols-outlined text-primary text-[20px] transition-transform duration-300" id="acc-2-icon">expand_more</span>
+</button>
+<div class="hidden px-4 pb-4 flex flex-col gap-2.5 text-on-surface-variant font-body-sm text-body-sm" id="acc-2">
+<p>Every skin utilized is a byproduct of ethical livestock cultivation, tanned strictly using mimosa and chestnut extracts in Santa Croce sull'Arno, Tuscany. No heavy chromium or synthetic coatings.</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-secondary text-[18px]">nature</span>
+<span class="font-label-caps-sm text-label-caps-sm text-primary uppercase">Leather Working Group (LWG) Gold Rated</span>
+</div>
+</div>
+</div>
+<!-- Accordion 3 -->
+<div class="bg-surface-container-low shadow-sm">
+<button class="w-full p-4 flex items-center justify-between text-left" onclick="toggleAccordion('acc-3')">
+<span class="font-body-md text-body-md font-medium text-primary">White-Glove Delivery &amp; 30-Day Trial</span>
+<span class="material-symbols-outlined text-primary text-[20px] transition-transform duration-300" id="acc-3-icon">expand_more</span>
+</button>
+<div class="hidden px-4 pb-4 flex flex-col gap-2.5 text-on-surface-variant font-body-sm text-body-sm" id="acc-3">
+<p>Shipped in tamper-evident security vault via priority insured courier. Experience the acoustic precision in your personal sanctuary with 30 calendar days of risk-free acoustic contemplation.</p>
+<p class="font-body-sm text-body-sm text-primary font-medium">Includes 3-Year Atelier Hardware Warranty with immediate unit replacement.</p>
+</div>
+</div>
+</section>
+<!-- Curated Pairings ('Pairs Elegantly With') -->
+<section class="px-margin-mobile pt-space-lg flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary uppercase tracking-widest">SYNERGETIC OBJECTS</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-normal">Pairs Elegantly With</h3>
+</div>
+<a class="font-label-caps-sm text-label-caps-sm text-primary underline underline-offset-4" href="#">VIEW ALL ACCESSORIES</a>
+</div>
+<!-- 2 Horizontal Curated Cards -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Pair 1 -->
+<div class="bg-surface-container-low p-3 flex flex-col justify-between shadow-sm">
+<div class="w-full aspect-square bg-surface-container overflow-hidden mb-2 relative">
+<img class="w-full h-full object-cover" data-alt="Minimalist sculpted dark bronze magnetic desk stand holding over-ear headphones on an architectural marble surface, museum lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANW8y8AN2v4RPA5ktWk9qfvAaRGLPlfaHObfbLs-lXMrXS_xRz41XEM5mLTZTLQF86zCedIg8Il5gZX390gYBerAjZpsbWARs7qeWZMi_1XxebrU98xV6_2Oq9BM3w-Zc96UmwqWUiqu3jRj9nIFqfAZ9uY1BWUbGBAPzBbsS403BHqUf12eP4Je97aeT8ZiJmMbjVvg7r88u-xhvxZP4gbpYQCc_lkpmUzabHSITW"/>
+<span class="absolute bottom-2 left-2 bg-surface/90 px-1.5 py-0.5 font-label-caps-sm text-label-caps-sm text-primary">MAGNETIC</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-body-sm text-body-sm font-semibold text-primary">Magnetic Desk Stand</h4>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface-variant">Forged Dark Bronze</span>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container/50 px-2 py-1">
+<span class="font-body-sm text-body-sm text-primary font-medium">$95 USD</span>
+<button aria-label="Add Desk Stand" class="text-primary hover:text-secondary" onclick="addAddon(95, 'Magnetic Desk Stand')">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pair 2 -->
+<div class="bg-surface-container-low p-3 flex flex-col justify-between shadow-sm">
+<div class="w-full aspect-square bg-surface-container overflow-hidden mb-2 relative">
+<img class="w-full h-full object-cover" data-alt="Full-grain Tuscan saddle leather travel case with burnished brass zippers, presented on a warm ivory limestone table." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVWbGYOxGQA_JvtxO4oi137P8SqXSI695ZAuLl0Xue-cvj0uG2oomMuCJ0lI1-qsEpg92JaWR1g4F7-pyOiAs4fQ3GI87g0Mf_LgzuAZrn1G_C03JkDRDXf6UNr18LfvgBj6Do_aU_KTjSG3VvMr7RSiLcj3viypW45vmfLYUPWwZ_5pqWa6RJeHReEojDE74pUa0otuN_0jId-Yp5ycTLD_M1ZJg8mKpA760BPhrF"/>
+<span class="absolute bottom-2 left-2 bg-surface/90 px-1.5 py-0.5 font-label-caps-sm text-label-caps-sm text-primary">LEATHER</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-body-sm text-body-sm font-semibold text-primary">Saddle Leather Travel Vault</h4>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface-variant">Tuscan Tan Leather</span>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container/50 px-2 py-1">
+<span class="font-body-sm text-body-sm text-primary font-medium">$140 USD</span>
+<button aria-label="Add Travel Vault" class="text-primary hover:text-secondary" onclick="addAddon(140, 'Saddle Leather Travel Vault')">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Client Endorsements & Atelier Quote -->
+<section class="px-margin-mobile pt-space-lg pb-32 flex flex-col gap-4">
+<div class="bg-primary text-surface p-6 shadow-md flex flex-col gap-4 relative overflow-hidden">
+<div class="flex items-center gap-1 text-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-headline-sm text-headline-sm italic font-normal leading-relaxed text-surface-bright">
+        “The acoustic stage separation of the Aethel is nothing short of sublime. It renders orchestral recordings with the warmth and physical presence of being in the golden ring of the Musikverein.”
+      </blockquote>
+<div class="flex items-center justify-between pt-2">
+<div>
+<span class="font-body-sm text-body-sm font-semibold text-surface block">Henri V. de Montfort</span>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary-fixed-dim uppercase">Acoustic Architect • Zurich</span>
+</div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary-fixed bg-surface-container-high/20 px-2 py-1 uppercase">Verified Patron</span>
+</div>
+</div>
+</section>
+<!-- Floating Sticky Purchase Bar / Drawer -->
+<aside class="fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-xl px-margin-mobile pt-3 pb-6 shadow-[0_-8px_20px_rgba(0,0,0,0.06)] flex flex-col gap-2.5">
+<!-- Quick Specs Sub-bar -->
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="truncate font-label-caps-sm text-label-caps-sm text-primary uppercase" id="sticky-selection-summary">Matte Obsidian • Nappa Leather</span>
+</div>
+<!-- Quantity Selector -->
+<div class="flex items-center bg-surface-container px-2 py-1 shadow-inner gap-3">
+<button aria-label="Decrease quantity" class="w-6 h-6 flex items-center justify-center text-primary font-bold hover:text-secondary" onclick="adjustQty(-1)">−</button>
+<span class="font-body-sm text-body-sm font-medium text-primary w-4 text-center" id="qty-val">1</span>
+<button aria-label="Increase quantity" class="w-6 h-6 flex items-center justify-center text-primary font-bold hover:text-secondary" onclick="adjustQty(1)">+</button>
+</div>
+</div>
+<!-- Primary Purchase Actions -->
+<div class="flex items-center gap-2">
+<!-- Concierge & Wishlist Buttons -->
+<button aria-label="Save to Wishlist" class="w-12 h-12 bg-surface-container flex items-center justify-center text-primary hover:bg-surface-container-high shadow-sm transition-colors" onclick="toggleWishlist(this)">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+</button>
+<button aria-label="Atelier Concierge Assistance" class="w-12 h-12 bg-surface-container flex items-center justify-center text-primary hover:bg-surface-container-high shadow-sm transition-colors" onclick="openConcierge()">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+</button>
+<!-- Primary Action CTA -->
+<button class="flex-1 h-12 bg-primary hover:bg-secondary text-surface font-label-caps-md text-label-caps-md tracking-widest uppercase flex items-center justify-between px-4 transition-all duration-300 shadow-md" id="cta-add-bag" onclick="addToBag()">
+<span>ADD TO BAG</span>
+<span class="font-medium" id="sticky-total-price">$780 USD</span>
+</button>
+</div>
+<!-- Express Payment Pill -->
+<button class="w-full h-10 bg-surface-container-lowest text-primary hover:bg-surface-container shadow-sm flex items-center justify-center gap-1.5 transition-colors" onclick="quickExpressPay()">
+<span class="font-label-caps-sm text-label-caps-sm tracking-wider uppercase font-semibold">BUY NOW WITH</span>
+<span class="font-headline-sm text-headline-sm font-medium leading-none text-primary">Apple Pay</span>
+</button>
+</aside>
+<!-- Toast Notification System (Hidden by default) -->
+<div class="fixed top-20 left-4 right-4 z-50 bg-primary text-surface p-3.5 shadow-2xl flex items-center justify-between transition-transform duration-300 transform -translate-y-32 pointer-events-none" id="atelier-toast">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-caps-md text-label-caps-md text-surface uppercase">Curated Bag Updated</span>
+<span class="font-body-sm text-body-sm text-surface-variant" id="toast-message">Aethel Studio Master added to your collection.</span>
+</div>
+</div>
+<span class="font-label-caps-sm text-label-caps-sm text-secondary-fixed uppercase underline">VIEW</span>
+</div>
+</div>
+<script>
+  let basePrice = 780;
+  let cushionSurcharge = 0;
+  let engravingSurcharge = 0;
+  let currentQty = 1;
+  let selectedColor = 'Matte Obsidian';
+  let selectedCushionName = 'Nappa Leather';
+  let hasEngraving = false;
+
+  function updatePricing() {
+    const singleUnitPrice = basePrice + cushionSurcharge + engravingSurcharge;
+    const finalTotal = singleUnitPrice * currentQty;
+    const installment = Math.round(finalTotal / 4);
+
+    document.getElementById('display-price').innerText = '$' + finalTotal + ' USD';
+    document.getElementById('installment-price').innerText = '$' + installment;
+    document.getElementById('sticky-total-price').innerText = '$' + finalTotal + ' USD';
+
+    const engravingText = hasEngraving ? ' • Monogrammed' : '';
+    document.getElementById('sticky-selection-summary').innerText = 
+      selectedColor + ' • ' + selectedCushionName + engravingText;
+  }
+
+  function setGallerySlide(index) {
+    const container = document.getElementById('gallery-container');
+    container.style.transform = 'translateX(-' + (index * 100) + '%)';
+    document.getElementById('gallery-counter').innerText = 'IMAGE ' + (index + 1) + ' / 5';
+
+    const thumbs = document.querySelectorAll('.thumb-btn');
+    thumbs.forEach((thumb, i) => {
+      if (i === index) {
+        thumb.classList.remove('opacity-50');
+        thumb.classList.add('opacity-100');
+      } else {
+        thumb.classList.add('opacity-50');
+        thumb.classList.remove('opacity-100');
+      }
+    });
+  }
+
+  function selectColor(btn, colorName, hexCode) {
+    selectedColor = colorName;
+    document.getElementById('selected-finish-name').innerText = colorName;
+
+    const allButtons = document.querySelectorAll('.color-swatch-btn');
+    allButtons.forEach(b => {
+      b.classList.add('opacity-60');
+      const icon = b.querySelector('.material-symbols-outlined');
+      if (icon) icon.classList.replace('text-surface', 'text-transparent');
+    });
+
+    btn.classList.remove('opacity-60');
+    const activeIcon = btn.querySelector('.material-symbols-outlined');
+    if (activeIcon) activeIcon.classList.replace('text-transparent', 'text-surface');
+
+    triggerDelightHaptic();
+    updatePricing();
+  }
+
+  function selectCushion(btn, surcharge, cushionName) {
+    cushionSurcharge = surcharge;
+    selectedCushionName = cushionName.replace('Italian ', '').replace('Tuscan ', '');
+
+    const nappa = document.getElementById('cushion-nappa');
+    const alcantara = document.getElementById('cushion-alcantara');
+
+    if (surcharge === 0) {
+      nappa.className = 'cushion-opt p-3 text-left bg-primary-container text-on-primary shadow-sm flex flex-col justify-between transition-all';
+      nappa.querySelector('.material-symbols-outlined').className = 'material-symbols-outlined text-[16px] text-surface-bright';
+      alcantara.className = 'cushion-opt p-3 text-left bg-surface-container text-on-surface shadow-sm flex flex-col justify-between transition-all opacity-80 hover:opacity-100';
+      alcantara.querySelector('.material-symbols-outlined').className = 'material-symbols-outlined text-[16px] text-transparent';
+      document.getElementById('cushion-badge').innerText = 'INCLUDED';
+    } else {
+      alcantara.className = 'cushion-opt p-3 text-left bg-primary-container text-on-primary shadow-sm flex flex-col justify-between transition-all';
+      alcantara.querySelector('.material-symbols-outlined').className = 'material-symbols-outlined text-[16px] text-surface-bright';
+      nappa.className = 'cushion-opt p-3 text-left bg-surface-container text-on-surface shadow-sm flex flex-col justify-between transition-all opacity-80 hover:opacity-100';
+      nappa.querySelector('.material-symbols-outlined').className = 'material-symbols-outlined text-[16px] text-transparent';
+      document.getElementById('cushion-badge').innerText = '+ $50 USD';
+    }
+
+    triggerDelightHaptic();
+    updatePricing();
+  }
+
+  function toggleEngraving() {
+    hasEngraving = !hasEngraving;
+    const inputBox = document.getElementById('engraving-input-box');
+    const dot = document.getElementById('engraving-toggle-dot');
+    const toggleBtn = document.getElementById('engraving-toggle-btn');
+
+    if (hasEngraving) {
+      inputBox.classList.remove('hidden');
+      inputBox.classList.add('flex');
+      dot.classList.add('translate-x-6');
+      toggleBtn.classList.replace('bg-surface-container-high', 'bg-primary');
+      engravingSurcharge = 45;
+    } else {
+      inputBox.classList.add('hidden');
+      inputBox.classList.remove('flex');
+      dot.classList.remove('translate-x-6');
+      toggleBtn.classList.replace('bg-primary', 'bg-surface-container-high');
+      engravingSurcharge = 0;
+    }
+
+    triggerDelightHaptic();
+    updatePricing();
+  }
+
+  function updateMonogram(val) {
+    if (val.length > 0) {
+      document.getElementById('sticky-selection-summary').innerText = 
+        selectedColor + ' • ' + selectedCushionName + ' • [' + val.toUpperCase() + ']';
+    } else {
+      updatePricing();
+    }
+  }
+
+  function adjustQty(delta) {
+    const newQty = currentQty + delta;
+    if (newQty >= 1 && newQty <= 5) {
+      currentQty = newQty;
+      document.getElementById('qty-val').innerText = currentQty;
+      updatePricing();
+      triggerDelightHaptic();
+    }
+  }
+
+  function toggleAccordion(id) {
+    const content = document.getElementById(id);
+    const icon = document.getElementById(id + '-icon');
+    const isHidden = content.classList.contains('hidden');
+
+    if (isHidden) {
+      content.classList.remove('hidden');
+      icon.style.transform = 'rotate(180deg)';
+    } else {
+      content.classList.add('hidden');
+      icon.style.transform = 'rotate(0deg)';
+    }
+  }
+
+  function addAddon(price, title) {
+    basePrice += price;
+    updatePricing();
+    showToast(title + ' added to your order.');
+  }
+
+  function toggleWishlist(btn) {
+    const icon = btn.querySelector('.material-symbols-outlined');
+    if (icon.innerText === 'favorite_border') {
+      icon.innerText = 'favorite';
+      icon.style.fontVariationSettings = "'FILL' 1";
+      icon.classList.add('text-secondary');
+      showToast('Saved to your Private Atelier Wishlist');
+    } else {
+      icon.innerText = 'favorite_border';
+      icon.style.fontVariationSettings = "'FILL' 0";
+      icon.classList.remove('text-secondary');
+    }
+  }
+
+  function openConcierge() {
+    showToast('Acoustic Concierge connecting in real-time...');
+  }
+
+  function addToBag() {
+    const btn = document.getElementById('cta-add-bag');
+    const origHTML = btn.innerHTML;
+    btn.innerHTML = '<span>RESERVING UNIT...</span><span class="material-symbols-outlined text-[18px] animate-spin">refresh</span>';
+    
+    setTimeout(() => {
+      btn.innerHTML = origHTML;
+      showToast('Aethel Studio Master placed in your Shopping Bag.');
+    }, 600);
+  }
+
+  function quickExpressPay() {
+    showToast('Opening Secure Apple Pay biometric portal...');
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('atelier-toast');
+    document.getElementById('toast-message').innerText = msg;
+    toast.classList.remove('-translate-y-32');
+    toast.classList.add('translate-y-0');
+
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0');
+      toast.classList.add('-translate-y-32');
+    }, 3200);
+  }
+
+  function triggerDelightHaptic() {
+    if (navigator.vibrate) {
+      navigator.vibrate(10);
+    }
+  }
+</script></main></body></html>
