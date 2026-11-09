@@ -21,6 +21,7 @@
     "postcss": "^8.5.32",
     "react": "latest",
     "react-dom": "latest",
+    "react-icons": "^5.7.0",
     "react-router-dom": "latest",
     "tailwindcss": "^3.4.19",
     "three": "^0.187.0",

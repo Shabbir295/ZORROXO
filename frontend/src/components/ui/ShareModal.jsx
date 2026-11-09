@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Link as LinkIcon, Check, MessageCircle, Globe, AtSign, Camera } from 'lucide-react';
+import { X, Link as LinkIcon, Check } from 'lucide-react';
+// 🔥 Original Icons Import Kiye (react-icons se)
+import { FaWhatsapp, FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 
-// 🔥 Social Media Options (Lucide Icons)
 const socials = [
-  { name: 'WhatsApp', icon: MessageCircle, url: 'https://wa.me/?text=' },
-  { name: 'Facebook', icon: Globe, url: 'https://www.facebook.com/sharer/sharer.php?u=' },
-  { name: 'Twitter', icon: AtSign, url: 'https://twitter.com/intent/tweet?url=' },
-  { name: 'Instagram', icon: Camera, url: 'https://www.instagram.com/' }, 
+  { name: 'WhatsApp', icon: FaWhatsapp, url: 'https://wa.me/?text=', color: 'hover:text-[#25D366]' },
+  { name: 'Facebook', icon: FaFacebookF, url: 'https://www.facebook.com/sharer/sharer.php?u=', color: 'hover:text-[#1877F2]' },
+  { name: 'Twitter', icon: FaTwitter, url: 'https://twitter.com/intent/tweet?url=', color: 'hover:text-[#1DA1F2]' },
+  { name: 'Instagram', icon: FaInstagram, url: 'https://www.instagram.com/', color: 'hover:text-[#E4405F]' },
 ];
 
 export default function ShareModal({ isOpen, onClose, url }) {
@@ -57,9 +58,10 @@ export default function ShareModal({ isOpen, onClose, url }) {
                   href={`${social.url}${encodeURIComponent(url)}`} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 p-3 bg-white/50 border border-[#D8CBB8] hover:border-[#A18A70] hover:bg-white transition-all rounded-lg text-sm text-obsidian font-medium group"
+                  className={`flex items-center gap-3 p-3 bg-white/50 border border-[#D8CBB8] hover:border-[#A18A70] hover:bg-white transition-all rounded-lg text-sm text-obsidian font-medium group ${social.color}`}
                 >
-                  <social.icon size={18} className="text-[#A18A70] group-hover:text-obsidian transition-colors" />
+                  {/* 🔥 Asli Icon Yahan Hai */}
+                  <social.icon size={20} className="text-[#A18A70] group-hover:text-current transition-colors" />
                   {social.name}
                 </a>
               ))}
