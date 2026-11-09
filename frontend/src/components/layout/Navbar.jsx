@@ -100,9 +100,9 @@ export default function Navbar() {
               </Link>
             )}
             
-            {/* 🔥 SHARE BUTTON */}
-            <button onClick={() => setIsShareModalOpen(true)} className="text-obsidian hover:text-[#A18A70] transition-colors hidden sm:block">
-              <Share2 size={18} />
+            {/* 🔥 SHARE BUTTON (Ab Mobile Par Bhi Dikhega) */}
+            <button onClick={() => setIsShareModalOpen(true)} className="text-obsidian hover:text-[#A18A70] transition-colors">
+              <Share2 size={16} className="sm:w-[18px] sm:h-[18px]" />
             </button>
 
             <Link to="/search" className="text-obsidian hover:text-[#A18A70] transition-colors"><Search size={16} className="sm:w-[18px] sm:h-[18px]" /></Link>
