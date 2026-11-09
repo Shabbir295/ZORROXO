@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { User, Package, Heart, MapPin, LogOut, Loader2, Check, Pencil, LayoutDashboard, Shield } from 'lucide-react';
+import { User, Package, Heart, MapPin, LogOut, Loader2, Check, Pencil, Shield } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 
@@ -30,7 +30,6 @@ export default function Account() {
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
 
-  // 🔥 Admin State (Sirf aapke email ke liye)
   const isMasterAdmin = user?.email === 'fayyazriaz2245@gmail.com';
 
   useEffect(() => {
@@ -141,7 +140,7 @@ export default function Account() {
                 </button>
               ))}
               
-              {/* 🔥 ADMINISTRATOR ACCESS (Sirf aapke email ke liye) */}
+              {/* ADMINISTRATOR ACCESS */}
               {isMasterAdmin && (
                 <div className="mt-4 pt-4 border-t border-champagne">
                   <p className="text-[9px] tracking-[0.2em] uppercase text-[#A18A70] font-bold px-4 mb-2 flex items-center gap-1">
@@ -151,7 +150,7 @@ export default function Account() {
                     to="/admin" 
                     className="w-full flex items-center gap-3 px-4 py-3 text-sm bg-[#111110] text-white hover:bg-[#A18A70] transition-colors font-semibold rounded-md"
                   >
-                    <LayoutDashboard size={16} /> Admin Panel
+                    Admin Panel
                   </Link>
                 </div>
               )}
@@ -193,6 +192,21 @@ export default function Account() {
                       <label className="text-[11px] tracking-[0.2em] uppercase text-bronze mb-2 block">Email Address</label>
                       <input type="email" value={user.email} disabled className="w-full bg-transparent border-b border-transparent py-2 text-obsidian/50 cursor-not-allowed" />
                     </div>
+                    
+                    {/* 🔥 NAYA PASSWORD FIELD (Read-Only) */}
+                    <div className="sm:col-span-2">
+                      <label className="text-[11px] tracking-[0.2em] uppercase text-bronze mb-2 block">Password</label>
+                      <input 
+                        type="text" 
+                        value="••••••••••••" 
+                        disabled 
+                        className="w-full bg-transparent border-b border-transparent py-2 text-obsidian/50 cursor-not-allowed tracking-widest" 
+                      />
+                      <p className="text-[9px] text-bronze mt-1 flex items-center gap-1">
+                        <Shield size={10} /> For security reasons, only Admin can reset your password.
+                      </p>
+                    </div>
+
                     <div>
                       <label className="text-[11px] tracking-[0.2em] uppercase text-bronze mb-2 block">Phone Number</label>
                       <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} disabled={!isEditingProfile} placeholder="+92 300 0000000" className={`w-full bg-transparent border-b border-champagne py-2 text-obsidian placeholder-obsidian/30 focus:outline-none ${isEditingProfile ? 'focus:border-bronze' : 'border-transparent cursor-default'}`} />

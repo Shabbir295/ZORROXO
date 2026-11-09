@@ -1,12 +1,13 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingBag, Heart, Search, User, Menu, X, LayoutDashboard } from 'lucide-react';
+import { ShoppingBag, Heart, Search, User, Menu, X, LayoutDashboard, Share2 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { supabase } from '../../lib/supabase';
 import AuthModal from '../ui/AuthModal';
+import ShareModal from '../ui/ShareModal'; // 🔥 Import Share Modal
 
 const navLinks = [
   { to: '/shop', label: 'Shop' },
@@ -30,6 +31,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false); // 🔥 Share Modal State
   const [isAdmin, setIsAdmin] = useState(false);
   
   const { user } = useAuth();
@@ -68,25 +70,18 @@ export default function Navbar() {
       <nav className={`sticky top-0 left-0 right-0 z-[100] transition-all duration-500 border-b border-[#D8CBB8]/50 ${scrolled ? 'bg-[#F5F1E9]/95 backdrop-blur-md py-3 shadow-sm' : 'bg-[#F5F1E9] py-4 lg:py-5'}`}>
         <div className="container-luxury flex items-center justify-between px-4 sm:px-6 lg:px-12">
           
-          {/* LEFT: Menu Icon + Logo */}
           <div className="flex items-center gap-2 sm:gap-4 justify-start flex-1">
             <button onClick={() => setMobileOpen(true)} className="lg:hidden text-obsidian p-1 -ml-1">
               <Menu size={20} />
             </button>
             
-            {/* 🔥 WAHI PEHLA WALA TEXT LOGO (ZX + ZORROXO) */}
-            <Link to="/" onClick={handleLogoClick} className="flex items-center gap-3 group">
-              <span className="font-heading text-3xl font-bold tracking-tighter text-[#A18A70] transition-transform duration-500 group-hover:scale-105">
-                ZX
-              </span>
-              <span className="w-[1px] h-6 bg-[#D8CBB8] hidden sm:block"></span>
-              <span className="font-heading text-lg sm:text-xl text-obsidian tracking-[0.25em] transition-colors duration-500 group-hover:text-[#A18A70]">
+            <Link to="/" onClick={handleLogoClick} className="flex-shrink-0">
+              <span className="font-heading text-lg sm:text-xl lg:text-2xl text-obsidian tracking-[0.1em] sm:tracking-[0.2em] lg:tracking-[0.25em] font-bold">
                 ZORROXO
               </span>
             </Link>
           </div>
 
-          {/* CENTER: Desktop Menu */}
           <ul className="hidden lg:flex items-center justify-center gap-8 flex-shrink-0">
             {navLinks.map((link) => (
               <li key={link.to}>
@@ -98,13 +93,18 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* RIGHT: Icons with Badges */}
           <div className="flex items-center justify-end gap-3 sm:gap-4 lg:gap-5 flex-1">
             {isAdmin && (
               <Link to="/admin" className="hidden sm:flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase bg-[#111110] text-white px-3 py-1.5 rounded-lg hover:bg-[#A18A70] transition-colors" title="Admin Panel">
                 <LayoutDashboard size={14} /><span className="hidden md:inline">Admin</span>
               </Link>
             )}
+            
+            {/* 🔥 SHARE BUTTON */}
+            <button onClick={() => setIsShareModalOpen(true)} className="text-obsidian hover:text-[#A18A70] transition-colors hidden sm:block">
+              <Share2 size={18} />
+            </button>
+
             <Link to="/search" className="text-obsidian hover:text-[#A18A70] transition-colors"><Search size={16} className="sm:w-[18px] sm:h-[18px]" /></Link>
             <Link to="/wishlist" className="text-obsidian hover:text-[#A18A70] transition-colors relative">
               <Heart size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -119,21 +119,13 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* SIDEBAR MOBILE MENU */}
       <AnimatePresence>
         {mobileOpen && (
           <>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMobileOpen(false)} className="fixed inset-0 z-[200] bg-black/40 backdrop-blur-sm lg:hidden" />
             <motion.div variants={sidebarVariants} initial="closed" animate="open" exit="closed" className="fixed top-0 left-0 bottom-0 z-[201] w-[85%] max-w-sm bg-[#EBE5D9] flex flex-col shadow-2xl lg:hidden">
               <div className="flex items-center justify-between p-6 border-b border-[#D8CBB8]">
-                
-                {/* MOBILE LOGO */}
-                <div className="flex items-center gap-3">
-                  <span className="font-heading text-2xl font-bold tracking-tighter text-[#A18A70]">ZX</span>
-                  <span className="w-[1px] h-5 bg-[#D8CBB8]"></span>
-                  <span className="font-heading text-lg text-obsidian tracking-[0.2em]">ZORROXO</span>
-                </div>
-
+                <span className="font-heading text-xl text-obsidian tracking-[0.2em] font-bold">ZORROXO</span>
                 <button onClick={() => setMobileOpen(false)} className="text-obsidian hover:text-[#A18A70]"><X size={26} /></button>
               </div>
               <div className="flex-1 flex flex-col justify-center px-8 gap-6">
@@ -163,6 +155,9 @@ export default function Navbar() {
       </AnimatePresence>
 
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
+      
+      {/* 🔥 SHARE MODAL */}
+      <ShareModal isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} url="https://zorroxo.vercel.app" />
     </>
   );
 }
