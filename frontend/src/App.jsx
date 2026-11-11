@@ -45,6 +45,7 @@ import AdminOrders from './admin/Orders';
 import AdminCustomers from './admin/Customers';
 import CustomerDetails from './admin/CustomerDetails';
 import PasswordRequests from './admin/PasswordRequests';
+import SocialBinding from './admin/SocialBinding'; // 🔥 Naya Import
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -54,16 +55,16 @@ function ScrollToTop() {
 
 function StoreLayout() {
   useEffect(() => {
-    // 🔥 PERFECT LENIS SETTINGS (PC + Mobile)
+    // 🔥 PERFECT LENIS SETTINGS
     const lenis = new Lenis({
-      duration: 1.5, // Thoda slow aur smooth (Apple jaisa)
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth curve
+      duration: 1.5,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction: 'vertical',
       gestureDirection: 'vertical',
       smooth: true,
       mouseMultiplier: 1,
-      smoothTouch: true, // 🔥 Mobile par bhi smooth scroll ON
-      touchMultiplier: 2, // Touch speed
+      smoothTouch: true,
+      touchMultiplier: 2,
       infinite: false,
     });
 
@@ -77,8 +78,6 @@ function StoreLayout() {
       lenis.destroy();
     };
   }, []);
-
-  // ... baaki code waisa hi rahega
 
   return (
     <div className="min-h-screen bg-ivory flex flex-col">
@@ -143,6 +142,7 @@ export default function App() {
                   <Route path="customers" element={<AdminCustomers />} />
                   <Route path="customers/:id" element={<CustomerDetails />} /> 
                   <Route path="password-requests" element={<PasswordRequests />} />
+                  <Route path="social-binding" element={<SocialBinding />} /> {/* 🔥 Naya Route */}
                 </Route>
 
                 {/* CUSTOMER ROUTES */}
