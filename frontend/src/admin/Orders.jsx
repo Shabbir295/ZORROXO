@@ -31,7 +31,7 @@ export default function AdminOrders() {
   const fetchOrders = async () => {
     setLoading(true);
     
-    // 🔥 Ab Query Simple Hai (Kyunke Data Direct Table Mein Hai)
+    // 🔥 Data fetch query
     const { data, error } = await supabase
       .from('orders')
       .select(`
@@ -80,21 +80,26 @@ export default function AdminOrders() {
       <div>
         <p className="text-[10px] tracking-[0.2em] uppercase text-[#A18A70] font-bold mb-2">Management</p>
         <h1 className="font-heading text-3xl sm:text-4xl text-[#111110]">Orders</h1>
+        <p className="text-sm text-gray-500 mt-1">Manage customer orders and delivery status.</p>
       </div>
 
       {orders.length === 0 ? (
         <div className="bg-white rounded-2xl border border-[#F5F1E9] p-12 text-center shadow-sm">
-          <Package size={32} className="text-[#A18A70] mx-auto mb-4" />
+          <div className="w-20 h-20 bg-[#F5F1E9] rounded-full flex items-center justify-center mx-auto mb-4">
+            <Package size={32} className="text-[#A18A70]" />
+          </div>
           <h3 className="font-heading text-2xl text-[#111110] mb-2">No Orders Yet</h3>
+          <p className="text-sm text-gray-500">When customers place orders, they will appear here.</p>
         </div>
       ) : (
-        <div className="bg-white rounded-2xl shadow-sm border border-[#F5F1E9] overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#F5F1E9] overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm min-w-[800px]">
+            <table className="w-full text-left text-sm min-w-[1000px]">
               <thead className="bg-[#F5F1E9]/50 border-b border-[#F5F1E9] text-[10px] uppercase tracking-[0.15em] text-gray-500">
                 <tr>
                   <th className="p-5 font-bold">Order ID</th>
                   <th className="p-5 font-bold">Customer</th>
+                  <th className="p-5 font-bold">Phone</th> {/* 🔥 Naya Column */}
                   <th className="p-5 font-bold">Products</th>
                   <th className="p-5 font-bold">Total</th>
                   <th className="p-5 font-bold">Status</th>
@@ -104,22 +109,28 @@ export default function AdminOrders() {
                 {orders.map((order) => (
                   <tr key={order.id} className="hover:bg-[#F5F1E9]/30 transition-colors group">
                     
+                    {/* Order ID & Date */}
                     <td className="p-5 align-top">
                       <p className="font-bold text-[#111110]">#ZX-{order.id.split('-')[0].toUpperCase()}</p>
                       <p className="text-[10px] text-gray-400 mt-1">{new Date(order.created_at).toLocaleDateString()}</p>
                     </td>
 
+                    {/* Customer Name (Sirf Naam) */}
                     <td className="p-5 align-top">
-                      {/* 🔥 Direct Customer Name */}
                       <p className="font-medium text-[#111110] capitalize">{order.customer_name || 'Guest'}</p>
-                      <p className="text-[10px] text-gray-500 mt-0.5">{order.customer_phone || 'No phone'}</p>
+                      <p className="text-[9px] uppercase tracking-wider text-[#A18A70] mt-1 font-bold">{order.payment_method || 'COD'}</p>
                     </td>
 
+                    {/* 🔥 Phone Number (Alag Column) */}
+                    <td className="p-5 align-top">
+                      <p className="text-xs text-gray-600">{order.customer_phone || 'No phone'}</p>
+                    </td>
+
+                    {/* Products List */}
                     <td className="p-5 align-top">
                       <div className="space-y-1">
                         {order.order_items?.map((item, idx) => (
                           <div key={idx} className="flex items-start gap-1">
-                            {/* 🔥 Direct Product Name */}
                             <span className="text-xs font-medium text-[#111110]">• {item.product_name || 'Product'}</span>
                             <span className="text-[10px] text-gray-500">(x{item.quantity})</span>
                           </div>
@@ -127,10 +138,12 @@ export default function AdminOrders() {
                       </div>
                     </td>
 
+                    {/* Total Amount */}
                     <td className="p-5 align-top">
                       <p className="font-bold text-[#111110]">{formatPrice(order.total_amount)}</p>
                     </td>
 
+                    {/* Status Dropdown */}
                     <td className="p-5 align-top">
                       <div className="relative inline-block">
                         <select 
@@ -142,8 +155,12 @@ export default function AdminOrders() {
                           {statusOptions.map(opt => <option key={opt} value={opt}>{opt.toUpperCase()}</option>)}
                         </select>
                         <ChevronDown size={14} className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        {updating === order.id && (
+                          <Loader2 size={14} className="animate-spin absolute -right-6 top-1/2 -translate-y-1/2 text-[#A18A70]" />
+                        )}
                       </div>
                     </td>
+
                   </tr>
                 ))}
               </tbody>
