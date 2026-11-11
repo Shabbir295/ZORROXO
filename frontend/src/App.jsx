@@ -54,15 +54,17 @@ function ScrollToTop() {
 
 function StoreLayout() {
   useEffect(() => {
-    // 🔥 OPTIMIZED LENIS SETTINGS (No Lag)
+    // 🔥 PERFECT LENIS SETTINGS (PC + Mobile)
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.5, // Thoda slow aur smooth (Apple jaisa)
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth curve
+      direction: 'vertical',
+      gestureDirection: 'vertical',
       smooth: true,
-      smoothTouch: false, // 🔥 Mobile par native scroll better hota hai
-      touchMultiplier: 1.5,
-      syncTouch: true,
-      touchInertiaMultiplier: 35,
+      mouseMultiplier: 1,
+      smoothTouch: true, // 🔥 Mobile par bhi smooth scroll ON
+      touchMultiplier: 2, // Touch speed
+      infinite: false,
     });
 
     function raf(time) {
@@ -75,6 +77,8 @@ function StoreLayout() {
       lenis.destroy();
     };
   }, []);
+
+  // ... baaki code waisa hi rahega
 
   return (
     <div className="min-h-screen bg-ivory flex flex-col">
