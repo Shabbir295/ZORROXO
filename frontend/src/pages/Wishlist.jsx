@@ -1,13 +1,27 @@
-﻿import React from 'react';
+﻿import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Heart, ShoppingBag, X } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext'; // 🔥 Auth Import
+import { useCurrency } from '../context/CurrencyContext';
 
 export default function Wishlist() {
   const { wishlistItems, toggleWishlist } = useWishlist();
   const { addToCart } = useCart();
+  const { user } = useAuth();
+  const { formatPrice } = useCurrency();
+  const navigate = useNavigate();
+
+  // 🔥 Login Check: Bina login ke Wishlist nahi khulegi
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
+
+  if (!user) return null;
 
   if (wishlistItems.length === 0) {
     return (
@@ -31,7 +45,7 @@ export default function Wishlist() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {wishlistItems.map((product, i) => (
-            <motion.div key={product.id} className="group">
+            <motion.div key={product.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="group">
               <div className="relative overflow-hidden bg-champagne/30 aspect-[3/4] mb-4">
                 <Link to={`/product/${product.id}`}>
                   <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -43,9 +57,9 @@ export default function Wishlist() {
               <Link to={`/product/${product.id}`}>
                 <h3 className="font-heading text-base text-obsidian group-hover:text-bronze transition-colors mb-1">{product.name}</h3>
                 <p className="text-[10px] tracking-[0.15em] uppercase text-bronze mb-2">{product.category}</p>
-                <p className="font-heading text-base text-obsidian mb-3">${product.price}</p>
+                <p className="font-heading text-base text-obsidian mb-3">{formatPrice(product.price)}</p>
               </Link>
-              <button onClick={() => addToCart(product)} className="btn-primary w-full flex items-center justify-center gap-2 !py-3">
+              <button onClick={() => addToCart(product, 1, 'M')} className="btn-primary w-full flex items-center justify-center gap-2 !py-3">
                 <ShoppingBag size={13} /> Add to Cart
               </button>
             </motion.div>

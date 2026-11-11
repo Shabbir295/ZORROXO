@@ -5,7 +5,8 @@ import { Heart, ShoppingBag, Star, Minus, Plus, Truck, RotateCcw, Shield, Loader
 import { supabase } from '../lib/supabase';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
-import { useCurrency } from '../context/CurrencyContext'; // 🔥 Currency Hook
+import { useAuth } from '../context/AuthContext'; // 🔥 Auth Import
+import { useCurrency } from '../context/CurrencyContext';
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -21,7 +22,8 @@ export default function ProductDetails() {
 
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
-  const { formatPrice } = useCurrency(); // 🔥 Hook
+  const { user } = useAuth(); // 🔥 Auth Check
+  const { formatPrice } = useCurrency();
 
   const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
@@ -44,6 +46,31 @@ export default function ProductDetails() {
     fetchProduct();
     window.scrollTo(0, 0);
   }, [id, navigate]);
+
+  // 🔥 LOGIN CHECK FUNCTION
+  const checkLogin = () => {
+    if (!user) {
+      navigate('/login');
+      return false;
+    }
+    return true;
+  };
+
+  const handleAddToCart = () => {
+    if (!checkLogin()) return;
+    addToCart(product, quantity, selectedSize);
+  };
+
+  const handleBuyNow = () => {
+    if (!checkLogin()) return;
+    addToCart(product, quantity, selectedSize);
+    navigate('/checkout');
+  };
+
+  const handleWishlist = () => {
+    if (!checkLogin()) return;
+    toggleWishlist(product);
+  };
 
   if (loading) {
     return (
@@ -88,21 +115,31 @@ export default function ProductDetails() {
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
             {product.tag && (
-              <span className="inline-block bg-bronze text-ivory text-[9px] tracking-[0.2em] uppercase px-3 py-1 mb-3">{product.tag}</span>
+              <span className="inline-block bg-bronze text-ivory text-[9px] tracking-[0.2em] uppercase px-3 py-1 mb-3">
+                {product.tag}
+              </span>
             )}
             
-            <p className="text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-bronze mb-2">{product.category}</p>
-            <h1 className="font-heading text-3xl md:text-5xl text-obsidian mb-3 leading-tight">{product.name}</h1>
+            <p className="text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-bronze mb-2">
+              {product.category}
+            </p>
+            
+            <h1 className="font-heading text-3xl md:text-5xl text-obsidian mb-3 leading-tight">
+              {product.name}
+            </h1>
             
             <div className="flex items-center gap-2 mb-4">
               <div className="flex items-center gap-1 text-bronze">
-                {[...Array(5)].map((_, i) => (<Star key={i} size={12} fill={i < Math.floor(product.rating) ? 'currentColor' : 'none'} />))}
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={12} fill={i < Math.floor(product.rating) ? 'currentColor' : 'none'} />
+                ))}
               </div>
               <span className="text-xs md:text-sm text-obsidian/60">{product.rating} (127 reviews)</span>
             </div>
 
-            {/* 🔥 FORMATTED PRICE */}
-            <p className="font-heading text-2xl md:text-3xl text-obsidian mb-5">{formatPrice(product.price)}</p>
+            <p className="font-heading text-2xl md:text-3xl text-obsidian mb-5">
+              {formatPrice(product.price)}
+            </p>
             
             <p className="text-obsidian/70 text-sm md:text-base leading-relaxed mb-6">
               {product.description || 'Crafted from the finest materials with meticulous attention to detail. This timeless piece embodies the essence of elevated living.'}
@@ -115,7 +152,9 @@ export default function ProductDetails() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {sizes.map((size) => (
-                  <button key={size} onClick={() => setSelectedSize(size)} className={`w-10 h-10 md:w-12 md:h-12 text-sm transition-colors ${selectedSize === size ? 'bg-obsidian text-ivory' : 'border border-champagne text-obsidian hover:border-bronze'}`}>{size}</button>
+                  <button key={size} onClick={() => setSelectedSize(size)} className={`w-10 h-10 md:w-12 md:h-12 text-sm transition-colors ${selectedSize === size ? 'bg-obsidian text-ivory' : 'border border-champagne text-obsidian hover:border-bronze'}`}>
+                    {size}
+                  </button>
                 ))}
               </div>
             </div>
@@ -128,16 +167,16 @@ export default function ProductDetails() {
                   <button onClick={() => setQuantity(quantity + 1)} className="w-10 h-12 flex items-center justify-center text-obsidian hover:text-bronze transition-colors"><Plus size={16} /></button>
                 </div>
                 
-                <button onClick={() => toggleWishlist(product)} className={`flex-1 sm:flex-none sm:w-12 h-12 border border-champagne flex items-center justify-center transition-colors ${inWishlist ? 'bg-bronze text-white border-bronze' : 'text-obsidian hover:border-bronze hover:text-bronze'}`}>
+                <button onClick={handleWishlist} className={`flex-1 sm:flex-none sm:w-12 h-12 border border-champagne flex items-center justify-center transition-colors ${inWishlist ? 'bg-bronze text-white border-bronze' : 'text-obsidian hover:border-bronze hover:text-bronze'}`}>
                   <Heart size={18} fill={inWishlist ? "currentColor" : "none"} />
                 </button>
               </div>
 
-              <button onClick={() => addToCart(product, quantity, selectedSize)} className="w-full btn-primary flex items-center justify-center gap-2 h-12 md:h-14">
+              <button onClick={handleAddToCart} className="w-full btn-primary flex items-center justify-center gap-2 h-12 md:h-14">
                 <ShoppingBag size={16} /> <span className="text-xs md:text-sm">Add to Cart</span>
               </button>
 
-              <button onClick={() => { addToCart(product, quantity, selectedSize); navigate('/checkout'); }} className="w-full bg-bronze text-white py-4 text-xs tracking-[0.2em] uppercase font-semibold hover:bg-[#8A7458] transition-colors flex items-center justify-center h-12 md:h-14">
+              <button onClick={handleBuyNow} className="w-full bg-bronze text-white py-4 text-xs tracking-[0.2em] uppercase font-semibold hover:bg-[#8A7458] transition-colors flex items-center justify-center h-12 md:h-14">
                 Buy It Now
               </button>
             </div>
@@ -157,7 +196,6 @@ export default function ProductDetails() {
           </motion.div>
         </div>
 
-        {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div>
             <div className="text-center mb-8">
@@ -172,7 +210,6 @@ export default function ProductDetails() {
                       <img src={p.image_url} alt={p.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     </div>
                     <h3 className="font-heading text-sm md:text-base text-obsidian group-hover:text-bronze transition-colors line-clamp-1">{p.name}</h3>
-                    {/* 🔥 FORMATTED PRICE */}
                     <p className="font-heading text-xs md:text-sm text-obsidian mt-1">{formatPrice(p.price)}</p>
                   </Link>
                 </motion.div>
