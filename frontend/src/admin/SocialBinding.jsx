@@ -16,7 +16,7 @@ const platforms = [
 
 export default function SocialBinding() {
   const [links, setLinks] = useState({});
-  const [editingPlatform, setEditingPlatform] = useState(null); // Kis platform par edit chal raha hai
+  const [editingPlatform, setEditingPlatform] = useState(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
@@ -54,23 +54,41 @@ export default function SocialBinding() {
     let url = links[platformId] || '';
     const platform = platforms.find(p => p.id === platformId);
 
-    // 🔥 SMART VALIDATION
+    // 🔥 SMART VALIDATION (Super Strong)
     if (url.trim() !== '') {
-      url = url.trim();
-      
+      url = url.trim().toLowerCase();
+
       // 1. Agar http/https nahi hai, toh laga do
       if (!url.startsWith('http://') && !url.startsWith('https://')) {
         url = 'https://' + url;
       }
 
-      // 2. Check karo ke domain sahi hai ya nahi
-      if (!url.includes(platform.domain)) {
-        showToast(`Invalid link! Must be a ${platform.name} URL containing "${platform.domain}"`, 'error');
+      // 2. URL ko parse karo (Asli domain nikalne ke liye)
+      let domainName = '';
+      try {
+        const parsed = new URL(url);
+        domainName = parsed.hostname; // e.g., "www.facebook.com" ya "facebook.com"
+      } catch (e) {
+        showToast(`Invalid URL format for ${platform.name}.`, 'error');
+        setSaving(false);
+        return;
+      }
+
+      // 3. Check karo ke domain bilkul sahi hai ya nahi
+      // (Isse "xyzfacebook.com" ya "facebook.com.fake.com" reject ho jayenge)
+      const validDomains = [
+        platform.domain,           // "facebook.com"
+        `www.${platform.domain}`,  // "www.facebook.com"
+        `m.${platform.domain}`     // "m.facebook.com"
+      ];
+
+      if (!validDomains.includes(domainName)) {
+        showToast(`Invalid link! Please enter a valid ${platform.name} URL (e.g., ${platform.example}).`, 'error');
         setSaving(false);
         return;
       }
       
-      links[platformId] = url; // Update state
+      links[platformId] = url;
     }
 
     try {
@@ -80,7 +98,7 @@ export default function SocialBinding() {
         .eq('platform', platformId);
 
       showToast(`${platform.name} link updated!`);
-      setEditingPlatform(null); // Edit mode band karo
+      setEditingPlatform(null);
     } catch (error) {
       showToast(error.message, 'error');
     } finally {
@@ -121,7 +139,6 @@ export default function SocialBinding() {
                 {platform.name} URL
               </label>
               
-              {/* 🔥 Edit Mode vs View Mode */}
               {editingPlatform === platform.id ? (
                 <div className="flex flex-col sm:flex-row gap-2 mt-1">
                   <input 
@@ -140,7 +157,6 @@ export default function SocialBinding() {
                       <X size={14} />
                     </button>
                   </div>
-                  <p className="text-[10px] text-gray-400 mt-1 sm:hidden">Example: {platform.example}</p>
                 </div>
               ) : (
                 <div className="flex items-center justify-between mt-1 bg-white border border-gray-200 p-2.5 rounded-lg">
