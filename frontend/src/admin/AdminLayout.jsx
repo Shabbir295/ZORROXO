@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LayoutDashboard, Package, ShoppingCart, Users, LogOut, ArrowLeft, Store, Menu, X, Key } from 'lucide-react'; // 🔥 Key icon add kiya
+import { LayoutDashboard, Package, ShoppingCart, Users, LogOut, ArrowLeft, Store, Menu, X, Key, Share2 } from 'lucide-react'; 
 import { useAuth } from '../context/AuthContext';
 
 export default function AdminLayout() {
@@ -20,7 +20,8 @@ export default function AdminLayout() {
     { path: '/admin/products', label: 'Products', icon: Package },
     { path: '/admin/orders', label: 'Orders', icon: ShoppingCart },
     { path: '/admin/customers', label: 'Customers', icon: Users },
-    { path: '/admin/password-requests', label: 'Password Requests', icon: Key }, // 🔥 Naya Menu Item
+    { path: '/admin/password-requests', label: 'Password Requests', icon: Key },
+    { path: '/admin/social-binding', label: 'Social Media', icon: Share2 }, // 🔥 Naya Menu Item
   ];
 
   const SidebarContent = () => (
@@ -76,7 +77,6 @@ export default function AdminLayout() {
   return (
     <div className="min-h-screen bg-[#F5F1E9] flex flex-col md:flex-row font-body">
       
-      {/* MOBILE TOP BAR */}
       <div className="md:hidden bg-[#111110] text-white p-4 flex items-center justify-between sticky top-0 z-[80]">
         <div className="flex items-center gap-2">
           <Store size={18} className="text-[#A18A70]" />
@@ -87,13 +87,11 @@ export default function AdminLayout() {
         </button>
       </div>
 
-      {/* DESKTOP SIDEBAR */}
       <aside className="hidden md:flex w-72 bg-[#111110] text-[#F5F1E9] flex-col shadow-2xl z-20 relative h-screen sticky top-0 overflow-hidden shrink-0">
         <div className="absolute top-0 left-0 w-full h-64 bg-[#A18A70]/10 blur-[80px] pointer-events-none" />
         <SidebarContent />
       </aside>
 
-      {/* MOBILE SIDEBAR */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -117,7 +115,6 @@ export default function AdminLayout() {
         )}
       </AnimatePresence>
 
-      {/* MAIN CONTENT AREA */}
       <main className="flex-1 w-full min-h-screen md:h-screen md:overflow-y-auto">
         <div className="p-4 md:p-12 max-w-7xl mx-auto">
           <motion.div
