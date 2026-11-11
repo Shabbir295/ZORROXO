@@ -27,13 +27,15 @@ export default function NewArrivals() {
   if (loading) return <div className="py-24 flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-bronze" /></div>;
 
   return (
-    <section className="py-24 bg-ivory">
+    <section className="py-24 bg-ivory overflow-hidden">
       <div className="container-luxury">
+        
+        {/* Header Animation */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="flex items-end justify-between mb-12"
         >
           <div>
@@ -45,21 +47,16 @@ export default function NewArrivals() {
           </Link>
         </motion.div>
 
+        {/* Product Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {products.map((product, i) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }} // 🔥 Animation tabhi trigger hogi jab section screen par aayega
-              transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
-              className="group cursor-pointer will-change-transform" // 🔥 Browser ko batata hai ke ye animate hoga
-            >
+            <div key={product.id} className="group cursor-pointer">
               <Link to={`/product/${product.id}`}>
                 <div className="relative aspect-[4/5] overflow-hidden bg-champagne/20 mb-4">
                   <img 
                     src={product.image_url} 
                     alt={product.name}
+                    loading="lazy" // 🔥 Image lazy load (Lag khatam)
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-4 right-4 bg-ivory/90 backdrop-blur-sm px-3 py-1 text-[10px] tracking-wider uppercase font-bold text-obsidian">
@@ -72,7 +69,7 @@ export default function NewArrivals() {
                   <p className="font-medium text-obsidian">{formatPrice(product.price)}</p>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
