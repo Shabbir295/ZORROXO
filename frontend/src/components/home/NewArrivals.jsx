@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Loader2 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
-import { useCurrency } from '../../context/CurrencyContext'; // 🔥 Import
+import { useCurrency } from '../../context/CurrencyContext';
 
 export default function NewArrivals() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { formatPrice } = useCurrency(); // 🔥 Hook
+  const { formatPrice } = useCurrency();
 
   useEffect(() => {
     async function fetchNewProducts() {
@@ -16,7 +16,7 @@ export default function NewArrivals() {
         .from('products')
         .select('*')
         .order('created_at', { ascending: false })
-        .limit(3); // Sirf 3 naye products dikhane ke liye
+        .limit(3);
 
       if (!error) setProducts(data || []);
       setLoading(false);
@@ -32,8 +32,8 @@ export default function NewArrivals() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex items-end justify-between mb-12"
         >
           <div>
@@ -51,9 +51,9 @@ export default function NewArrivals() {
               key={product.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group cursor-pointer"
+              viewport={{ once: true, margin: "-50px" }} // 🔥 Animation tabhi trigger hogi jab section screen par aayega
+              transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+              className="group cursor-pointer will-change-transform" // 🔥 Browser ko batata hai ke ye animate hoga
             >
               <Link to={`/product/${product.id}`}>
                 <div className="relative aspect-[4/5] overflow-hidden bg-champagne/20 mb-4">
@@ -69,7 +69,6 @@ export default function NewArrivals() {
                 <div className="text-center">
                   <p className="text-[10px] tracking-[0.2em] uppercase text-bronze mb-1">{product.category}</p>
                   <h3 className="font-heading text-xl text-obsidian mb-2">{product.name}</h3>
-                  {/* 🔥 Formatted Price */}
                   <p className="font-medium text-obsidian">{formatPrice(product.price)}</p>
                 </div>
               </Link>

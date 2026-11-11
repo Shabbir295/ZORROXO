@@ -36,7 +36,7 @@ import Returns from './pages/Returns';
 import SizeGuide from './pages/SizeGuide';
 import Privacy from './pages/priv'; 
 import Terms from './pages/Terms';
-import ForgotPassword from './pages/ForgotPassword'; // 🔥 IMPORT WAPAS ADD KIYA
+import ForgotPassword from './pages/ForgotPassword';
 
 // Admin Pages
 import AdminDashboard from './admin/Dashboard';
@@ -44,7 +44,7 @@ import AdminProducts from './admin/Products';
 import AdminOrders from './admin/Orders';
 import AdminCustomers from './admin/Customers';
 import CustomerDetails from './admin/CustomerDetails';
-import PasswordRequests from './admin/PasswordRequests'; // 🔥 Admin Panel ke liye
+import PasswordRequests from './admin/PasswordRequests';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -54,14 +54,26 @@ function ScrollToTop() {
 
 function StoreLayout() {
   useEffect(() => {
+    // 🔥 OPTIMIZED LENIS SETTINGS (No Lag)
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
+      smoothTouch: false, // 🔥 Mobile par native scroll better hota hai
+      touchMultiplier: 1.5,
+      syncTouch: true,
+      touchInertiaMultiplier: 35,
     });
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
-    return () => { lenis.destroy(); };
+
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   return (
@@ -82,7 +94,7 @@ function StoreLayout() {
           <Route path="/orders" element={<OrderHistory />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} /> {/* 🔥 ROUTE ADD KIYA */}
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
@@ -126,7 +138,7 @@ export default function App() {
                   <Route path="orders" element={<AdminOrders />} />
                   <Route path="customers" element={<AdminCustomers />} />
                   <Route path="customers/:id" element={<CustomerDetails />} /> 
-                  <Route path="password-requests" element={<PasswordRequests />} /> {/* 🔥 ADMIN ROUTE ADD KIYA */}
+                  <Route path="password-requests" element={<PasswordRequests />} />
                 </Route>
 
                 {/* CUSTOMER ROUTES */}
