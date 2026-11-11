@@ -23,7 +23,7 @@ export default function SocialBinding() {
 
   const showToast = (message, type = 'success') => {
     setToast({ show: true, message, type });
-    setTimeout(() => setToast({ show: false, message: '', type: 'success' }), 4000);
+    setTimeout(() => setToast({ show: false, message: '', type: 'success' }), 5000);
   };
 
   useEffect(() => {
@@ -54,36 +54,38 @@ export default function SocialBinding() {
     let url = links[platformId] || '';
     const platform = platforms.find(p => p.id === platformId);
 
-    // 🔥 SMART VALIDATION (Super Strong)
     if (url.trim() !== '') {
       url = url.trim().toLowerCase();
 
-      // 1. Agar http/https nahi hai, toh laga do
       if (!url.startsWith('http://') && !url.startsWith('https://')) {
         url = 'https://' + url;
       }
 
-      // 2. URL ko parse karo (Asli domain nikalne ke liye)
       let domainName = '';
       try {
         const parsed = new URL(url);
-        domainName = parsed.hostname; // e.g., "www.facebook.com" ya "facebook.com"
+        domainName = parsed.hostname;
       } catch (e) {
         showToast(`Invalid URL format for ${platform.name}.`, 'error');
         setSaving(false);
         return;
       }
 
-      // 3. Check karo ke domain bilkul sahi hai ya nahi
-      // (Isse "xyzfacebook.com" ya "facebook.com.fake.com" reject ho jayenge)
-      const validDomains = [
-        platform.domain,           // "facebook.com"
-        `www.${platform.domain}`,  // "www.facebook.com"
-        `m.${platform.domain}`     // "m.facebook.com"
-      ];
-
+      // 1. Domain Check
+      const validDomains = [platform.domain, `www.${platform.domain}`, `m.${platform.domain}`];
       if (!validDomains.includes(domainName)) {
         showToast(`Invalid link! Please enter a valid ${platform.name} URL (e.g., ${platform.example}).`, 'error');
+        setSaving(false);
+        return;
+      }
+
+      // 🔥 2. Video/Post Link Check (Sirf Profile Link Allow Hoga)
+      // Agar link mein ye cheezein hain, matlab ye video/post ka link hai
+      const badPatterns = ['/watch', '/shorts', '/reel', '/reels', '/p/', '/status/', '/video/'];
+      const isBadLink = badPatterns.some(pattern => url.includes(pattern));
+
+      if (isBadLink) {
+        showToast(`Please enter your ${platform.name} PROFILE link, not a video/post link.`, 'error');
         setSaving(false);
         return;
       }
@@ -97,7 +99,7 @@ export default function SocialBinding() {
         .update({ url: url, updated_at: new Date().toISOString() })
         .eq('platform', platformId);
 
-      showToast(`${platform.name} link updated!`);
+      showToast(`${platform.name} profile link updated!`);
       setEditingPlatform(null);
     } catch (error) {
       showToast(error.message, 'error');
@@ -113,8 +115,8 @@ export default function SocialBinding() {
       
       <AnimatePresence>
         {toast.show && (
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className={`fixed top-6 left-1/2 -translate-x-1/2 z-[400] px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 text-sm font-medium ${toast.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
-            {toast.type === 'success' ? <CheckCircle2 size={18} /> : <AlertCircle size={18} />}
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className={`fixed top-6 left-1/2 -translate-x-1/2 z-[400] px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 text-sm font-medium w-[90%] max-w-md justify-center text-center ${toast.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+            {toast.type === 'success' ? <CheckCircle2 size={18} className="shrink-0" /> : <AlertCircle size={18} className="shrink-0" />}
             {toast.message}
           </motion.div>
         )}
@@ -123,7 +125,7 @@ export default function SocialBinding() {
       <div>
         <p className="text-[10px] tracking-[0.2em] uppercase text-[#A18A70] font-bold mb-2">Settings</p>
         <h1 className="font-heading text-3xl sm:text-4xl text-[#111110]">Social Media Binding</h1>
-        <p className="text-sm text-gray-500 mt-1">Add your social media links to display them in the footer.</p>
+        <p className="text-sm text-gray-500 mt-1">Add your social media profile links to display them in the footer.</p>
       </div>
 
       <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-[#F5F1E9] space-y-4 max-w-3xl">
@@ -136,7 +138,7 @@ export default function SocialBinding() {
             
             <div className="flex-1 w-full">
               <label className="text-[10px] tracking-[0.2em] uppercase text-gray-500 font-bold mb-1 block">
-                {platform.name} URL
+                {platform.name} Profile URL
               </label>
               
               {editingPlatform === platform.id ? (
