@@ -2,7 +2,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Edit, Trash2, X, Upload, Loader2, CheckCircle2, Search, AlertCircle, Image as ImageIcon } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { useCurrency } from '../context/CurrencyContext'; // 🔥 Currency Hook
+import { useCurrency, currencies } from '../context/CurrencyContext'; // 🔥 Currencies Import
 
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);
@@ -14,7 +14,6 @@ export default function AdminProducts() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [formData, setFormData] = useState({ name: '', price: '', category: 'Women', stock: '', description: '', tag: '' });
   
-  // Images States
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
@@ -24,7 +23,7 @@ export default function AdminProducts() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
 
-  const { formatPrice } = useCurrency(); // 🔥 Hook
+  const { currency, formatPrice } = useCurrency(); // 🔥 Currency Hook
 
   const showToast = (message, type = 'success') => {
     setToast({ show: true, message, type });
@@ -205,7 +204,6 @@ export default function AdminProducts() {
                       </div>
                     </td>
                     <td className="p-6 text-gray-500 font-medium">{p.category}</td>
-                    {/* 🔥 FORMATTED PRICE */}
                     <td className="p-6 font-bold text-[#111110]">{formatPrice(p.price)}</td>
                     <td className="p-6 text-gray-500">{p.stock} units</td>
                     <td className="p-6 text-right space-x-3">
@@ -224,7 +222,6 @@ export default function AdminProducts() {
         </div>
       )}
 
-      {/* ADD/EDIT MODAL */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-[300] flex items-center justify-center p-4">
@@ -243,8 +240,13 @@ export default function AdminProducts() {
                       <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-2 block">Product Name</label>
                       <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-[#F5F1E9]/50 border border-[#F5F1E9] p-4 rounded-xl text-sm focus:outline-none focus:border-[#A18A70] focus:bg-white transition-all" placeholder="e.g. Cashmere Wrap Coat" />
                     </div>
+                    
                     <div>
-                      <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-2 block">Price ($)</label>
+                      {/* 🔥 PRICE LABEL MEIN CURRENCY SYMBOL */}
+                      <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-2 flex justify-between">
+                        <span>Price</span>
+                        <span className="text-bronze">{currencies[currency]?.symbol} ({currency})</span>
+                      </label>
                       <input type="number" required value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full bg-[#F5F1E9]/50 border border-[#F5F1E9] p-4 rounded-xl text-sm focus:outline-none focus:border-[#A18A70] focus:bg-white transition-all" placeholder="890" />
                     </div>
                     <div>

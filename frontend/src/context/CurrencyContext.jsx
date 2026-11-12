@@ -2,13 +2,14 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CurrencyContext = createContext();
 
+// 🔥 RATE 1 KAR DIYA HAI (No Conversion, Direct Price)
 export const currencies = {
   USD: { symbol: '$', rate: 1, name: 'US Dollar' },
-  PKR: { symbol: 'Rs.', rate: 278, name: 'Pakistani Rupee' },
-  INR: { symbol: '₹', rate: 83, name: 'Indian Rupee' },
-  GBP: { symbol: '£', rate: 0.79, name: 'British Pound' },
-  AED: { symbol: 'د.إ', rate: 3.67, name: 'UAE Dirham' },
-  EUR: { symbol: '€', rate: 0.92, name: 'Euro' },
+  PKR: { symbol: 'Rs.', rate: 1, name: 'Pakistani Rupee' },
+  INR: { symbol: '₹', rate: 1, name: 'Indian Rupee' },
+  GBP: { symbol: '£', rate: 1, name: 'British Pound' },
+  AED: { symbol: 'د.إ', rate: 1, name: 'UAE Dirham' },
+  EUR: { symbol: '€', rate: 1, name: 'Euro' },
 };
 
 export const CurrencyProvider = ({ children }) => {
@@ -20,18 +21,14 @@ export const CurrencyProvider = ({ children }) => {
     localStorage.setItem('zorroxo_currency', currency);
   }, [currency]);
 
-  const convertPrice = (priceInUSD) => {
-    const rate = currencies[currency]?.rate || 1;
-    return (priceInUSD * rate).toFixed(2);
-  };
-
-  const formatPrice = (priceInUSD) => {
+  // 🔥 Ab ye direct price return karega, bina kisi calculation ke
+  const formatPrice = (price) => {
     const symbol = currencies[currency]?.symbol || '$';
-    return `${symbol}${convertPrice(priceInUSD)}`;
+    return `${symbol}${Number(price).toFixed(2)}`;
   };
 
   return (
-    <CurrencyContext.Provider value={{ currency, setCurrency, convertPrice, formatPrice }}>
+    <CurrencyContext.Provider value={{ currency, setCurrency, formatPrice, currencies }}>
       {children}
     </CurrencyContext.Provider>
   );
