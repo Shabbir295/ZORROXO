@@ -1,10 +1,10 @@
 ﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { Lock, ArrowRight, Check, ArrowLeft, Loader2, CreditCard, Upload, CheckCircle2 } from 'lucide-react';
+import { Lock, ArrowRight, Check, ArrowLeft, Loader2, CreditCard, Upload, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
-import { useCurrency } from '../context/CurrencyContext'; // 🔥 Currency Hook
+import { useCurrency } from '../context/CurrencyContext';
 import { supabase } from '../lib/supabase';
 
 export default function Checkout() {
@@ -14,6 +14,7 @@ export default function Checkout() {
   const [screenshot, setScreenshot] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [placedOrder, setPlacedOrder] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null); // 🔥 Error message state
   
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', phone: '',
@@ -22,7 +23,7 @@ export default function Checkout() {
 
   const { cartItems, clearCart } = useCart();
   const { user } = useAuth();
-  const { formatPrice } = useCurrency(); // 🔥 Currency Hook
+  const { formatPrice } = useCurrency();
   const navigate = useNavigate();
 
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -31,6 +32,51 @@ export default function Checkout() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrorMsg(null); // Type karte hi error hata do
+  };
+
+  // 🔥 VALIDATION FUNCTION
+  const validateStep = (currentStep) => {
+    setErrorMsg(null);
+    
+    if (currentStep === 1) {
+      // Step 1: Info
+      if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim() || !formData.phone.trim()) {
+        setErrorMsg('Please fill in all the required fields (Name, Email, Phone).');
+        return false;
+      }
+      // Email format check
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        setErrorMsg('Please enter a valid email address.');
+        return false;
+      }
+    }
+
+    if (currentStep === 2) {
+      // Step 2: Shipping
+      if (!formData.address.trim() || !formData.city.trim() || !formData.postalCode.trim() || !formData.country.trim()) {
+        setErrorMsg('Please fill in all the shipping fields (Address, City, Postal Code, Country).');
+        return false;
+      }
+    }
+
+    if (currentStep === 3) {
+      // Step 3: Payment
+      if ((paymentMethod === 'easypaisa' || paymentMethod === 'jazzcash') && !screenshot) {
+        setErrorMsg('Please upload the payment screenshot to proceed.');
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  // 🔥 NEXT BUTTON LOGIC
+  const handleNext = () => {
+    if (validateStep(step)) {
+      setStep(step + 1);
+    }
   };
 
   const handlePlaceOrder = async (e) => {
@@ -41,16 +87,12 @@ export default function Checkout() {
       return;
     }
 
-    if ((paymentMethod === 'easypaisa' || paymentMethod === 'jazzcash') && !screenshot) {
-      alert('Please upload the payment screenshot.');
-      return;
-    }
+    if (!validateStep(3)) return; // Final check
 
     setIsPlacing(true);
     let screenshotUrl = null;
 
     try {
-      // 1. Screenshot Upload (Agar hai)
       if (screenshot) {
         const fileExt = screenshot.name.split('.').pop();
         const fileName = `${Date.now()}-${user.id}.${fileExt}`;
@@ -60,11 +102,10 @@ export default function Checkout() {
         screenshotUrl = urlData.publicUrl;
       }
 
-      // 2. Order Data (Customer Name & Phone Save Ho Raha Hai)
       const orderData = {
         user_id: user.id,
-        customer_name: `${formData.firstName} ${formData.lastName}`, // 🔥 Naya
-        customer_phone: formData.phone, // 🔥 Naya
+        customer_name: `${formData.firstName} ${formData.lastName}`,
+        customer_phone: formData.phone,
         total_amount: total,
         status: 'pending',
         payment_method: paymentMethod,
@@ -80,16 +121,13 @@ export default function Checkout() {
         }
       };
 
-      const { data: order, error: orderError } = await supabase
-        .from('orders').insert([orderData]).select().single();
-
+      const { data: order, error: orderError } = await supabase.from('orders').insert([orderData]).select().single();
       if (orderError) throw orderError;
 
-      // 3. Order Items (Product Name Save Ho Raha Hai)
       const orderItems = cartItems.map(item => ({ 
         order_id: order.id, 
         product_id: item.id, 
-        product_name: item.name, // 🔥 Naya
+        product_name: item.name,
         quantity: item.quantity, 
         price: item.price 
       }));
@@ -102,7 +140,7 @@ export default function Checkout() {
       
     } catch (error) {
       console.error('Order Error:', error);
-      alert(`Failed to place order: ${error.message}`);
+      setErrorMsg(error.message);
     } finally {
       setIsPlacing(false);
     }
@@ -125,7 +163,7 @@ export default function Checkout() {
               <div className="w-16 h-16 bg-[#F5F1E9] rounded-full flex items-center justify-center mb-4">
                 <CheckCircle2 size={32} className="text-[#A18A70]" />
               </div>
-              <h3 className="font-heading text-2xl text-[#22221F] mb-1">Thank You, {formData.firstName || 'Customer'}!</h3>
+              <h3 className="font-heading text-2xl text-[#22221F] mb-1">Thank You, {formData.firstName}!</h3>
               <p className="text-xs text-gray-500 text-center">Your order has been placed successfully.</p>
             </div>
 
@@ -224,24 +262,27 @@ export default function Checkout() {
 
         <div className="flex flex-col lg:grid lg:grid-cols-3 gap-8 w-full">
           
-          {/* Left Side: Forms */}
           <div className="w-full lg:col-span-2">
-            <motion.div
-              key={step}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="border border-champagne p-5 sm:p-8 bg-white/40 w-full"
-            >
+            <motion.div key={step} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="border border-champagne p-5 sm:p-8 bg-white/40 w-full">
+              
+              {/* 🔥 ERROR MESSAGE BOX */}
+              {errorMsg && (
+                <div className="mb-6 bg-red-50 border border-red-200 text-red-600 p-4 text-sm rounded-lg flex items-center gap-2">
+                  <AlertCircle size={18} className="shrink-0" />
+                  {errorMsg}
+                </div>
+              )}
+
               {step === 1 && (
                 <>
                   <h2 className="font-heading text-xl sm:text-2xl text-obsidian mb-6">Customer Information</h2>
                   <div className="space-y-4 w-full">
                     <div className="grid sm:grid-cols-2 gap-4 w-full">
-                      <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
-                      <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
+                      <input type="text" name="firstName" placeholder="First Name *" value={formData.firstName} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
+                      <input type="text" name="lastName" placeholder="Last Name *" value={formData.lastName} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
                     </div>
-                    <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
-                    <input type="tel" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
+                    <input type="email" name="email" placeholder="Email *" value={formData.email} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
+                    <input type="tel" name="phone" placeholder="Phone Number *" value={formData.phone} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
                   </div>
                 </>
               )}
@@ -250,12 +291,12 @@ export default function Checkout() {
                 <>
                   <h2 className="font-heading text-xl sm:text-2xl text-obsidian mb-6">Shipping Address</h2>
                   <div className="space-y-4 w-full">
-                    <input type="text" name="address" placeholder="Street Address" value={formData.address} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
+                    <input type="text" name="address" placeholder="Street Address *" value={formData.address} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
                     <div className="grid sm:grid-cols-2 gap-4 w-full">
-                      <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
-                      <input type="text" name="postalCode" placeholder="Postal Code" value={formData.postalCode} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
+                      <input type="text" name="city" placeholder="City *" value={formData.city} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
+                      <input type="text" name="postalCode" placeholder="Postal Code *" value={formData.postalCode} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
                     </div>
-                    <input type="text" name="country" placeholder="Country" value={formData.country} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
+                    <input type="text" name="country" placeholder="Country *" value={formData.country} onChange={handleChange} className="w-full bg-transparent border border-champagne px-4 py-3 text-sm focus:outline-none focus:border-bronze" required />
                   </div>
                 </>
               )}
@@ -302,8 +343,8 @@ export default function Checkout() {
 
                   {(paymentMethod === 'easypaisa' || paymentMethod === 'jazzcash') && (
                     <div className="mb-6 p-4 border border-dashed border-bronze bg-champagne/5">
-                      <h3 className="text-sm font-medium text-obsidian mb-2 flex items-center gap-2"><Upload size={16} /> Upload Payment Screenshot</h3>
-                      <input type="file" accept="image/*" onChange={(e) => setScreenshot(e.target.files[0])} className="w-full text-sm text-obsidian/70 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-xs file:uppercase file:font-semibold file:bg-obsidian file:text-ivory hover:file:bg-bronze" required />
+                      <h3 className="text-sm font-medium text-obsidian mb-2 flex items-center gap-2"><Upload size={16} /> Upload Payment Screenshot *</h3>
+                      <input type="file" accept="image/*" onChange={(e) => { setScreenshot(e.target.files[0]); setErrorMsg(null); }} className="w-full text-sm text-obsidian/70 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-xs file:uppercase file:font-semibold file:bg-obsidian file:text-ivory hover:file:bg-bronze" />
                     </div>
                   )}
                 </>
@@ -311,7 +352,7 @@ export default function Checkout() {
 
               <div className="flex flex-col-reverse sm:flex-row items-center justify-between mt-8 pt-6 border-t border-champagne gap-4 w-full">
                 {step > 1 ? (
-                  <button onClick={() => setStep(step - 1)} className="w-full sm:w-auto flex items-center justify-center gap-2 text-xs uppercase tracking-widest text-obsidian/60 hover:text-obsidian transition-colors py-3">
+                  <button onClick={() => { setStep(step - 1); setErrorMsg(null); }} className="w-full sm:w-auto flex items-center justify-center gap-2 text-xs uppercase tracking-widest text-obsidian/60 hover:text-obsidian transition-colors py-3">
                     <ArrowLeft size={14} /> Back
                   </button>
                 ) : (
@@ -321,7 +362,7 @@ export default function Checkout() {
                 )}
                 
                 {step < 3 ? (
-                  <button onClick={() => setStep(step + 1)} className="w-full sm:w-auto btn-primary flex items-center justify-center gap-2 py-4 sm:py-3">
+                  <button onClick={handleNext} className="w-full sm:w-auto btn-primary flex items-center justify-center gap-2 py-4 sm:py-3">
                     Continue <ArrowRight size={14} />
                   </button>
                 ) : (
@@ -333,7 +374,7 @@ export default function Checkout() {
             </motion.div>
           </div>
 
-          {/* Right Side: Order Summary */}
+          {/* Order Summary */}
           <div className="w-full lg:col-span-1">
             <div className="bg-ivory-light border border-champagne p-5 sm:p-8 lg:sticky lg:top-28 w-full">
               <h2 className="font-heading text-lg sm:text-xl text-obsidian mb-6">Order Summary</h2>
